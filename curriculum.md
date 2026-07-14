@@ -3,7 +3,7 @@
 <!-- /setup rewrites the profile line and the tracks from your interview answers.
      The one below is a worked example: an AI engineer closing the low-level gap. -->
 
-Profile: (set by /setup) — who the listener is, what they already know, what depth they're aiming for.
+Profile: Senior software engineer working hands-on with AI/LLM systems; skip basics, wants technical depth, architecture trade-offs, and practical implications over hype.
 
 The weekly deep-dive routine takes the **first unchecked item**, writes a ~20-minute spoken episode on it, and checks it off. Reorder freely to re-prioritize. Items promoted from the news get inserted wherever they fit.
 
