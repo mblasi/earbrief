@@ -1,0 +1,678 @@
+<title>AI Briefing</title>
+<style>
+  :root {
+    --ground: #f2f3f6;
+    --surface: #ffffff;
+    --surface-2: #e9ebf0;
+    --ink: #1f242e;
+    --muted: #5a6272;
+    --line: #d6dae2;
+    --accent: #b26b15;
+    --accent-ink: #ffffff;
+    --done: #3e7c4f;
+    --mono: "JetBrains Mono", "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #14181f;
+      --surface: #1d232d;
+      --surface-2: #262d39;
+      --ink: #e9ecf1;
+      --muted: #8a93a5;
+      --line: #333b49;
+      --accent: #f0a03c;
+      --accent-ink: #1c1206;
+      --done: #6fbc85;
+    }
+  }
+  :root[data-theme="light"] {
+    --ground: #f2f3f6; --surface: #ffffff; --surface-2: #e9ebf0;
+    --ink: #1f242e; --muted: #5a6272; --line: #d6dae2;
+    --accent: #b26b15; --accent-ink: #ffffff; --done: #3e7c4f;
+  }
+  :root[data-theme="dark"] {
+    --ground: #14181f; --surface: #1d232d; --surface-2: #262d39;
+    --ink: #e9ecf1; --muted: #8a93a5; --line: #333b49;
+    --accent: #f0a03c; --accent-ink: #1c1206; --done: #6fbc85;
+  }
+  html { background: var(--ground); }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--ground);
+    margin: 0;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 1.25rem 1rem 9rem; /* room for transport bar */
+  }
+  header.top { margin-bottom: 1.5rem; }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  h1 {
+    font-size: 1.35rem;
+    margin: 0.15rem 0 0.5rem;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .stats {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+  .stats .pill {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.15rem 0.6rem;
+    background: var(--surface);
+  }
+  .stats .pill b { color: var(--ink); font-weight: 600; }
+  .stats .syncbtn {
+    font: inherit;
+    border-color: var(--accent);
+    color: var(--accent);
+    cursor: pointer;
+  }
+  .stats .syncbtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .settings { margin-top: 0.75rem; font-size: 0.8rem; }
+  .settings summary {
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+  .settings .vrow {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .settings .vrow label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--muted);
+    min-width: 2rem;
+  }
+  .settings select {
+    flex: 1;
+    min-width: 0;
+    font: inherit;
+    font-size: 0.8rem;
+    padding: 0.35rem 0.5rem;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--surface);
+    color: var(--ink);
+  }
+  section h2 {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 1.5rem 0 0.6rem;
+  }
+  .list { display: flex; flex-direction: column; gap: 0.6rem; }
+  .ep {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 0.8rem 0.9rem 0.7rem;
+  }
+  .ep.current { border-color: var(--accent); }
+  .ep .meta {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .chip {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.1rem 0.45rem;
+    border-radius: 4px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+  }
+  .chip.deepdive { background: var(--accent); color: var(--accent-ink); }
+  .langchip {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .langchip.pinned { border-color: var(--accent); color: var(--accent); }
+  .langchip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .ep h3 {
+    font-size: 0.98rem;
+    font-weight: 600;
+    margin: 0.4rem 0 0.55rem;
+    line-height: 1.35;
+    text-wrap: balance;
+  }
+  .bar {
+    height: 3px;
+    background: var(--surface-2);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 0.6rem;
+  }
+  .bar i { display: block; height: 100%; width: 0; background: var(--accent); }
+  .ep.done .bar i { background: var(--done); }
+  .row { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+  .btn {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .btn:focus-visible, summary:focus-visible, select:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .spacer { flex: 1; }
+  .donechk {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+  }
+  .ep details.txt { margin-top: 0.6rem; }
+  .ep details.txt summary {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .ep .transcript {
+    font-size: 0.9rem;
+    max-width: 65ch;
+    color: var(--ink);
+  }
+  .transcript p { margin: 0.7em 0; }
+  .transcript p.now {
+    border-left: 2px solid var(--accent);
+    padding-left: 0.6rem;
+    margin-left: -0.66rem;
+  }
+  .ep details.srcs { margin-top: 0.35rem; }
+  .sourcelist {
+    margin: 0.4rem 0 0.2rem;
+    padding-left: 1.1rem;
+    font-size: 0.8rem;
+  }
+  .sourcelist li { margin: 0.25em 0; }
+  .sourcelist a {
+    color: var(--accent);
+    text-decoration: none;
+    word-break: break-word;
+  }
+  .sourcelist a:hover, .sourcelist a:focus-visible { text-decoration: underline; }
+  .empty {
+    color: var(--muted);
+    font-size: 0.85rem;
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    padding: 1rem;
+  }
+  /* transport bar */
+  .transport {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    background: var(--surface);
+    border-top: 1px solid var(--line);
+    padding: 0.6rem 1rem calc(0.6rem + env(safe-area-inset-bottom));
+  }
+  .transport .inner { max-width: 40rem; margin: 0 auto; }
+  .transport .title {
+    font-size: 0.78rem;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0.45rem;
+  }
+  .transport .title b { color: var(--ink); font-weight: 600; }
+  .transport .controls { display: flex; align-items: center; gap: 0.5rem; }
+  .tbtn {
+    font-family: var(--mono);
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    border-radius: 8px;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    min-width: 3rem;
+  }
+  .tbtn.play {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-ink);
+    font-size: 1rem;
+    padding: 0.55rem 1.4rem;
+    font-weight: 700;
+  }
+  .tbtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .tbar {
+    height: 3px;
+    background: var(--surface-2);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 0.55rem;
+  }
+  .tbar i { display: block; height: 100%; width: 0; background: var(--accent); }
+  @media (prefers-reduced-motion: no-preference) {
+    .bar i, .tbar i { transition: width 0.3s ease; }
+  }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="eyebrow">ai-briefing · on air</div>
+    <h1>Your briefing queue</h1>
+    <div class="stats">
+      <span class="pill"><b id="st-pending">0</b> pending</span>
+      <span class="pill"><b id="st-min">0</b> min in queue</span>
+      <span class="pill"><b id="st-done">0</b> listened</span>
+      <button class="pill syncbtn" id="st-sync" hidden></button>
+    </div>
+    <details class="settings">
+      <summary>voices</summary>
+      <div class="vrow"><label for="voice-en">EN</label><select id="voice-en" aria-label="English TTS voice"></select></div>
+      <div class="vrow"><label for="voice-es">ES</label><select id="voice-es" aria-label="Spanish TTS voice"></select></div>
+    </details>
+  </header>
+
+  <section>
+    <h2>Pending</h2>
+    <div class="list" id="pending"></div>
+  </section>
+
+  <section>
+    <details id="donewrap">
+      <summary style="cursor:pointer"><h2 style="display:inline-block;margin:1rem 0 0.6rem">Listened</h2></summary>
+      <div class="list" id="donelist"></div>
+    </details>
+  </section>
+</div>
+
+<div class="transport">
+  <div class="inner">
+    <div class="title" id="t-title">Nothing playing — pick an episode</div>
+    <div class="controls">
+      <button class="tbtn" id="t-prev" aria-label="Previous paragraph">⇤¶</button>
+      <button class="tbtn play" id="t-play" aria-label="Play or pause">▶</button>
+      <button class="tbtn" id="t-next" aria-label="Next paragraph">¶⇥</button>
+      <span class="spacer"></span>
+      <button class="tbtn" id="t-lang" aria-label="Listening language (auto: news in Spanish, deep-dives in English)">AUTO</button>
+      <button class="tbtn" id="t-rate" aria-label="Playback speed">1×</button>
+    </div>
+    <div class="tbar"><i id="t-bar"></i></div>
+  </div>
+</div>
+
+<script>
+const EPISODES = /*__EPISODES__*/[];
+const LISTENED = /*__LISTENED__*/[]; // ids checked in log.md at build time (repo = source of truth)
+const WPM = 150;
+const LS = "aib-v1";
+
+// ---------- state ----------
+let store = {};
+try { store = JSON.parse(localStorage.getItem(LS) || "{}"); } catch (e) { store = {}; }
+store.eps = store.eps || {};   // id -> {i: chunkIdx, l: lang the idx refers to, done: bool}
+store.rate = store.rate || 1;
+store.lang = store.lang || "auto"; // auto | en | es
+if (typeof store.voice !== "object" || !store.voice) store.voice = { en: store.voice || "", es: "" };
+store.synced = store.synced || []; // repo-listened ids already applied on this device
+function save() { localStorage.setItem(LS, JSON.stringify(store)); }
+function epState(id) { return store.eps[id] || (store.eps[id] = { i: 0, l: "en", done: false }); }
+
+// seed listened-state from the repo, once per id per device — after that the
+// local checkbox is free to disagree (e.g. unchecked for a replay)
+LISTENED.forEach(id => {
+  if (store.synced.indexOf(id) !== -1) return;
+  epState(id).done = true;
+  store.synced.push(id);
+});
+save();
+// local plays the repo doesn't know about yet → offered by the sync button
+function unsynced() {
+  return EPISODES.filter(e => epState(e.id).done && LISTENED.indexOf(e.id) === -1).map(e => e.id);
+}
+
+// ---------- chunking (sentence groups <=190 chars, tagged with paragraph idx) ----------
+function chunk(text) {
+  const out = [];
+  text.split(/\n\s*\n/).forEach((para, p) => {
+    const clean = para.replace(/\s+/g, " ").trim();
+    if (!clean) return;
+    const sentences = clean.match(/[^.!?]+[.!?]+["')\]]*\s*|.+$/g) || [clean];
+    let buf = "";
+    sentences.forEach(s => {
+      if (buf && (buf + s).length > 190) { out.push({ t: buf.trim(), p }); buf = ""; }
+      buf += s;
+    });
+    if (buf.trim()) out.push({ t: buf.trim(), p });
+  });
+  return out;
+}
+const CHUNKS = {};
+EPISODES.forEach(e => {
+  CHUNKS[e.id] = { en: chunk(e.text), es: e.text_es ? chunk(e.text_es) : null };
+});
+
+// ---------- language ----------
+// precedence: per-episode pin (st.o) > global mode > auto (news→es, deepdive→en)
+function langFor(ep) {
+  if (!ep.text_es) return "en";
+  const o = epState(ep.id).o;
+  if (o) return o;
+  if (store.lang === "auto") return ep.type === "news" ? "es" : "en";
+  return store.lang;
+}
+function chunksFor(ep) { return CHUNKS[ep.id][langFor(ep)] || CHUNKS[ep.id].en; }
+function titleFor(ep) { return langFor(ep) === "es" && ep.title_es ? ep.title_es : ep.title; }
+function textFor(ep) { return langFor(ep) === "es" && ep.text_es ? ep.text_es : ep.text; }
+// keep listening position when the language changes: map by paragraph index
+function syncLang(ep) {
+  const st = epState(ep.id);
+  const lang = langFor(ep);
+  if (st.l === lang) return st;
+  const from = CHUNKS[ep.id][st.l] || CHUNKS[ep.id].en;
+  const to = chunksFor(ep);
+  if (st.done || st.i >= from.length) { st.i = st.done ? to.length : Math.min(st.i, to.length); st.l = lang; return st; }
+  const para = (from[st.i] || { p: 0 }).p;
+  const idx = to.findIndex(c => c.p === para);
+  st.i = idx < 0 ? Math.min(st.i, to.length - 1) : idx;
+  st.l = lang;
+  return st;
+}
+
+// ---------- speech ----------
+const synth = window.speechSynthesis;
+let cur = null;        // current episode id
+let playing = false;
+let gen = 0;           // generation guard: cancel() fires onend in some engines
+let wakeLock = null;
+
+function epById(id) { return EPISODES.find(e => e.id === id); }
+function voices(lang) {
+  return synth.getVoices().filter(v => v.lang && v.lang.toLowerCase().startsWith(lang));
+}
+function pickVoice(lang) {
+  const vs = voices(lang);
+  return vs.find(v => v.name === store.voice[lang]) || vs.find(v => v.default) || vs[0] || null;
+}
+function speakChunk() {
+  const ep = epById(cur);
+  const st = syncLang(ep);
+  const chunks = chunksFor(ep);
+  if (st.i >= chunks.length) { finishEpisode(); return; }
+  const lang = langFor(ep);
+  const u = new SpeechSynthesisUtterance(chunks[st.i].t);
+  const v = pickVoice(lang);
+  if (v) u.voice = v;
+  u.lang = lang === "es" ? "es-419" : "en-US";
+  u.rate = store.rate;
+  const myGen = gen;
+  u.onend = () => {
+    if (myGen !== gen || !playing) return;
+    st.i++; save(); render();
+    speakChunk();
+  };
+  u.onerror = u.onend;
+  synth.speak(u);
+}
+async function play(id) {
+  if (cur !== id) { stopSpeech(); cur = id; }
+  const st = epState(id);
+  if (st.done) { st.done = false; st.i = 0; } // replay
+  playing = true;
+  gen++;
+  synth.cancel();
+  speakChunk();
+  try { wakeLock = await navigator.wakeLock.request("screen"); } catch (e) {}
+  render();
+}
+function stopSpeech() {
+  gen++;
+  playing = false;
+  synth.cancel();
+  if (wakeLock) { wakeLock.release().catch(() => {}); wakeLock = null; }
+}
+function pause() { stopSpeech(); render(); }
+function finishEpisode() {
+  const ep = epById(cur);
+  const st = epState(cur);
+  st.done = true; st.i = chunksFor(ep).length;
+  stopSpeech(); save(); render();
+}
+function seekPara(dir) {
+  if (!cur) return;
+  const ep = epById(cur);
+  const st = syncLang(ep);
+  const chunks = chunksFor(ep);
+  const p = (chunks[Math.min(st.i, chunks.length - 1)] || { p: 0 }).p + dir;
+  const idx = chunks.findIndex(c => c.p === Math.max(0, p));
+  st.i = idx < 0 ? (dir > 0 ? chunks.length : 0) : idx;
+  save();
+  if (playing) { gen++; synth.cancel(); speakChunk(); }
+  render();
+}
+
+// ---------- spark hook (UC5): fire an external Claude session ----------
+function sparkURL(ep) {
+  const firstPara = ep.text.split(/\n\s*\n/)[0].slice(0, 400);
+  const q = `While listening to my ai-briefing episode "${ep.title}" (${ep.date}, ${ep.type}), an idea sparked. The episode opens with: "${firstPara}". Ask me what the idea is, then help me deep-dive it. This session is independent of the briefing pipeline.`;
+  return "https://claude.ai/new?q=" + encodeURIComponent(q);
+}
+
+// ---------- render ----------
+const $ = id => document.getElementById(id);
+function mins(ep) {
+  const w = langFor(ep) === "es" && ep.text_es ? Math.round(ep.words * 1.05) : ep.words;
+  return Math.max(1, Math.round(w / WPM));
+}
+function pct(ep) {
+  const st = syncLang(ep);
+  if (st.done) return 100;
+  const n = chunksFor(ep).length || 1;
+  return Math.round(100 * Math.min(st.i, n) / n);
+}
+function card(ep) {
+  const st = syncLang(ep);
+  const el = document.createElement("article");
+  el.className = "ep" + (st.done ? " done" : "") + (cur === ep.id ? " current" : "");
+  const chipCls = ep.type === "deepdive" ? "chip deepdive" : "chip";
+  const chipTxt = ep.type === "deepdive" ? "deep dive" : "news";
+  el.innerHTML =
+    '<div class="meta"><span class="' + chipCls + '">' + chipTxt + "</span>" +
+    '<button class="langchip' + (st.o ? " pinned" : "") + '" data-act="lang" title="Tap to pin the language for this episode">' + langFor(ep) + (st.o ? " ✱" : "") + "</button>" +
+    "<span>" + ep.date + "</span><span>~" + mins(ep) + " min</span>" +
+    (st.done ? '<span style="color:var(--done)">✓ listened</span>' : "") + "</div>" +
+    "<h3></h3>" +
+    '<div class="bar"><i style="width:' + pct(ep) + '%"></i></div>' +
+    '<div class="row">' +
+    '<button class="btn primary" data-act="play">' + (st.i > 0 && !st.done ? "Resume" : (st.done ? "Replay" : "Play")) + "</button>" +
+    '<a class="btn" href="' + sparkURL(ep) + '" target="_blank" rel="noopener">✦ Spark</a>' +
+    '<span class="spacer"></span>' +
+    '<label class="donechk"><input type="checkbox" data-act="done"' + (st.done ? " checked" : "") + "> done</label>" +
+    "</div>" +
+    '<details class="txt"><summary>transcript</summary><div class="transcript"></div></details>' +
+    ((ep.sources || []).length ? '<details class="txt srcs"><summary>sources (' + ep.sources.length + ")</summary><ul class=\"sourcelist\"></ul></details>" : "");
+  el.querySelector("h3").textContent = titleFor(ep);
+  const sl = el.querySelector(".sourcelist");
+  if (sl) ep.sources.forEach(s => {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.href = s.url;
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.textContent = s.name;
+    li.appendChild(a);
+    sl.appendChild(li);
+  });
+  const tr = el.querySelector(".transcript");
+  const chunks = chunksFor(ep);
+  const curPara = (chunks[Math.min(st.i, chunks.length - 1)] || {}).p;
+  textFor(ep).split(/\n\s*\n/).forEach((para, p) => {
+    if (!para.trim()) return;
+    const pe = document.createElement("p");
+    pe.textContent = para.trim();
+    if (cur === ep.id && p === curPara && !st.done) pe.className = "now";
+    tr.appendChild(pe);
+  });
+  el.querySelector('[data-act="lang"]').onclick = () => {
+    if (!ep.text_es) return; // English-only episode, nothing to pin
+    const s = epState(ep.id);
+    // tap: pin the other language; tap again: back to following the default
+    s.o = s.o ? undefined : (langFor(ep) === "en" ? "es" : "en");
+    save();
+    if (playing && cur === ep.id) { syncLang(ep); gen++; synth.cancel(); speakChunk(); }
+    render();
+  };
+  el.querySelector('[data-act="play"]').onclick = () =>
+    (playing && cur === ep.id) ? pause() : play(ep.id);
+  el.querySelector('[data-act="done"]').onchange = ev => {
+    const s = epState(ep.id);
+    s.done = ev.target.checked;
+    s.i = s.done ? chunksFor(ep).length : 0;
+    if (s.done && cur === ep.id) stopSpeech();
+    save(); render();
+  };
+  return el;
+}
+function render() {
+  const pend = $("pending"), done = $("donelist");
+  pend.innerHTML = ""; done.innerHTML = "";
+  let nPend = 0, nDone = 0, minPend = 0;
+  EPISODES.forEach(ep => {
+    const c = card(ep);
+    if (epState(ep.id).done) { done.appendChild(c); nDone++; }
+    else { pend.appendChild(c); nPend++; minPend += mins(ep); }
+  });
+  if (!nPend) pend.innerHTML = '<div class="empty">Queue clear. Next episode lands with the morning routine.</div>';
+  $("st-pending").textContent = nPend;
+  $("st-done").textContent = nDone;
+  $("st-min").textContent = minPend;
+  const us = unsynced();
+  $("st-sync").hidden = !us.length;
+  if (us.length) $("st-sync").textContent = "sync " + us.length + " to log ⇪";
+  // transport
+  const ep = epById(cur);
+  $("t-play").textContent = playing ? "❚❚" : "▶";
+  $("t-rate").textContent = store.rate + "×";
+  $("t-lang").textContent = store.lang === "auto" ? "AUTO" : store.lang.toUpperCase();
+  if (ep) {
+    $("t-title").innerHTML = "<b></b>";
+    $("t-title").querySelector("b").textContent = titleFor(ep);
+    $("t-bar").style.width = pct(ep) + "%";
+  } else {
+    $("t-title").textContent = "Nothing playing — pick an episode";
+    $("t-bar").style.width = "0";
+  }
+}
+
+// ---------- wire up ----------
+$("t-play").onclick = () => {
+  if (!cur) { const first = EPISODES.find(e => !epState(e.id).done); if (first) play(first.id); return; }
+  playing ? pause() : play(cur);
+};
+$("st-sync").onclick = async () => {
+  const us = unsynced();
+  if (!us.length) return;
+  const msg = "mark listened: " + us.join(", ");
+  try {
+    await navigator.clipboard.writeText(msg);
+    $("st-sync").textContent = "copied ✓ — paste to Claude";
+  } catch (e) {
+    window.prompt("Copy this and paste it to Claude:", msg); // clipboard API unavailable
+  }
+};
+$("t-prev").onclick = () => seekPara(-1);
+$("t-next").onclick = () => seekPara(1);
+$("t-lang").onclick = () => {
+  const modes = ["auto", "en", "es"];
+  store.lang = modes[(modes.indexOf(store.lang) + 1) % modes.length];
+  save();
+  if (playing && cur) { gen++; synth.cancel(); speakChunk(); }
+  render();
+};
+$("t-rate").onclick = () => {
+  const rates = [1, 1.25, 1.5, 1.75];
+  store.rate = rates[(rates.indexOf(store.rate) + 1) % rates.length];
+  save();
+  if (playing) { gen++; synth.cancel(); speakChunk(); }
+  render();
+};
+function fillVoices() {
+  ["en", "es"].forEach(lang => {
+    const sel = $("voice-" + lang);
+    sel.innerHTML = "";
+    const vs = voices(lang);
+    if (!vs.length) {
+      const o = document.createElement("option");
+      o.textContent = "no " + lang.toUpperCase() + " voices installed";
+      o.disabled = true;
+      sel.appendChild(o);
+      return;
+    }
+    vs.forEach(v => {
+      const o = document.createElement("option");
+      o.value = v.name;
+      o.textContent = v.name + " (" + v.lang + ")";
+      if (v.name === store.voice[lang]) o.selected = true;
+      sel.appendChild(o);
+    });
+  });
+}
+["en", "es"].forEach(lang => {
+  $("voice-" + lang).onchange = ev => {
+    store.voice[lang] = ev.target.value; save();
+    if (playing && cur && langFor(epById(cur)) === lang) { gen++; synth.cancel(); speakChunk(); }
+  };
+});
+if (synth) {
+  fillVoices();
+  synth.onvoiceschanged = fillVoices;
+}
+document.addEventListener("visibilitychange", async () => {
+  if (!document.hidden && playing && !wakeLock) {
+    try { wakeLock = await navigator.wakeLock.request("screen"); } catch (e) {}
+  }
+});
+render();
+</script>
