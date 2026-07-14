@@ -51,6 +51,10 @@ English is always canonical. Optionally, episodes also get a Spanish rendition (
 
 Template improvements (player features, prompt fixes) flow one way, on your command: run `/update` in your repo and Claude fetches the template's latest files without touching your digests, log, or config.
 
+## Make it yours
+
+If this sounds like your kind of morning: hit **Use this template** to create your own repo, run `/setup` to get your first briefing scheduled, and if earbrief earns a spot on your phone's home screen, a ⭐ on this repo helps others find it.
+
 ## License
 
 MIT
