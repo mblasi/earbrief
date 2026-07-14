@@ -14,4 +14,4 @@ Written by /setup. Routines, CLAUDE.md, and chat ops read instance values from h
 
 ## Listener profile
 
-Senior software engineer working hands-on with AI/LLM systems. Skip the basics; wants technical depth, architecture trade-offs, and practical implications over hype. Comfortable with code-level detail, distributed systems, and ML terminology.
+Mid-senior AI engineer. Strong on integration (SDD, model APIs, agent loops, HITL); gap: low-level internals. Target: depth that changes design decisions, plus cutting-edge fluency. Allergic to hype and funding news.

@@ -1,15 +1,12 @@
-# Curriculum
+# Curriculum — p70 → p90
 
-<!-- /setup rewrites the profile line and the tracks from your interview answers.
-     The one below is a worked example: an AI engineer closing the low-level gap. -->
-
-Profile: Senior software engineer working hands-on with AI/LLM systems; skip basics, wants technical depth, architecture trade-offs, and practical implications over hype.
+Profile: mid-senior AI engineer. Solid on integration (SDD, model APIs, agent loops, HITL). Gap: low-level internals. Target: depth that changes design decisions, plus cutting-edge fluency.
 
 The weekly deep-dive routine takes the **first unchecked item**, writes a ~20-minute spoken episode on it, and checks it off. Reorder freely to re-prioritize. Items promoted from the news get inserted wherever they fit.
 
 ## Track A — How the model actually works
 
-- [ ] A1. Inference from the inside: tokenization → embeddings → the forward pass, and what a "token" costs
+- [x] A1. Inference from the inside: tokenization → embeddings → the forward pass, and what a "token" costs (2026-07-12)
 - [ ] A2. Attention mechanics: QKV, multi-head, causal masking — the actual matrices, no hand-waving
 - [ ] A3. The KV cache: why long context is a memory problem, prefill vs decode, and what that means for latency and pricing
 - [ ] A4. Sampling: temperature, top-p, logit bias, and why "the model is non-deterministic" is mostly false
@@ -38,3 +35,6 @@ The weekly deep-dive routine takes the **first unchecked item**, writes a ~20-mi
 ## Track E — Cutting edge (rotating)
 
 Items get promoted here from the daily digest when something methodologically new lands. Keep 2-3 max; stale ones get dropped.
+
+- [ ] E1. Autonomous attack chains: how JadePuffer's LLM agent planned, executed, and adapted a multi-stage ransomware operation end to end with no human re-prompting, and what that implies about the real ceiling on agent autonomy (2026-07-13)
+- [ ] E2. The Jacobian lens and the global workspace: how Anthropic's new probing technique found a compact "reportable" subspace inside Claude, what it borrows from global workspace theory, and what a runtime J-space check could catch that prompt-injection defenses miss (2026-07-14)
