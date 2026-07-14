@@ -57,8 +57,10 @@ Also update the profile line in `curriculum.md` with the same paragraph (condens
 
 Use the schedule skill (scheduled cloud agents). The user's repo must be connected to Claude's GitHub app — if scheduling fails on repo access, send them to claude.ai/code to connect the repo, then retry.
 
-- **Daily digest** — cron from the interview's daily time (UTC). Prompt: `Read routines/daily.md in this repo and follow it exactly.` Suggested model: sonnet.
-- **Weekly deep-dive** — cron from the weekly day+time (UTC). Prompt: `Read routines/weekly.md in this repo and follow it exactly.` Suggested model: opus.
+- **Daily digest** — cron from the interview's daily time (UTC). Prompt: `You are a scheduled routine of the earbrief pipeline. The repo is already cloned in your working directory. Read routines/daily.md in this repo and follow it exactly.` Suggested model: sonnet.
+- **Weekly deep-dive** — cron from the weekly day+time (UTC). Same prompt with `routines/weekly.md`. Suggested model: opus.
+
+Both routines need allowed tools beyond the defaults: `Bash, Read, Write, Edit, Glob, Grep, WebSearch, WebFetch, Artifact` (WebSearch/WebFetch for research, Artifact to republish the player).
 
 Record both trigger IDs in config.md. If routine creation is unavailable in this environment, write `(create manually)` in config.md and print step-by-step instructions for claude.ai/code/routines instead — including both prompts verbatim.
 
