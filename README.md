@@ -20,6 +20,42 @@ The default configuration tracks AI/ML engineering, but the sources and curricul
 3. Type `/setup`. Claude interviews you (schedule, language, listener profile, topic domain), personalizes the sources and curriculum, publishes your player, and creates the two routines.
 4. Bookmark the player URL it prints. Your first episode arrives on the next daily run.
 
+## Commands & use cases
+
+Everything is driven from a Claude Code session in your repo — two slash commands plus plain-language chat ops.
+
+### Slash commands
+
+| Command | What it does |
+|---|---|
+| `/setup` | First-run initialization: interviews you, writes `config.md`, personalizes `sources.md` and `curriculum.md`, publishes the player artifact, creates the two routines. |
+| `/update` | Pulls the latest template improvements (player features, prompt fixes) without touching your digests, log, or config. |
+
+### Chat ops
+
+Say these in any Claude session opened in the repo — no exact syntax required:
+
+| You say | What happens |
+|---|---|
+| "mark <episode> listened" | Checks the episode's line in `log.md`, commits, pushes. |
+| paste `mark listened: <id>, <id>` | The string the player's **sync** pill copies; checks the matching `log.md` lines. Devices see the update after the next rebuild (the daily routine's suffices). |
+| "add source X" / "disable source Y" | Edits `sources.md` (disable = prefix the line with `x`); takes effect on the next routine run. |
+| "promote <topic>" | Adds the topic to `curriculum.md` Track E (max 3 items), queued for an upcoming deep-dive. |
+| "rebuild and republish the player" | Regenerates `player/player.html` from the digests and log, republishes the artifact at the same URL. |
+| "update from upstream" | Same as `/update`. |
+
+### Use cases
+
+The full contract lives in `USECASES.md`; in short:
+
+- **Stay current** — the daily routine writes a news digest from your sources; you hit play.
+- **Close the knowledge gap** — the weekly routine writes a deep-dive from the next unchecked curriculum item.
+- **Track listened vs pending** — the player tracks on-device; `log.md` is the durable record, synced both ways through git (rebuild bakes it in, the sync pill pastes it back).
+- **Manage sources** — edit `sources.md` directly or via chat.
+- **Spark** — a button on any episode opens a fresh Claude session prefilled with that episode's context, for when a briefing wakes up an idea.
+- **Choose the listening language** — optional secondary-language rendition per episode, with AUTO/EN/ES modes and per-episode pinning.
+- **Promote news to curriculum** — digests flag deep-dive candidates; one chat op turns a headline into a future lesson.
+
 ## How it works
 
 - The **daily routine** reads `sources.md`, researches the last 24h, writes a spoken-prose digest into `digests/`, commits, and refreshes the player artifact.
