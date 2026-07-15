@@ -8,8 +8,8 @@ Instance values (player artifact URL, routine IDs, schedule, languages, listener
 
 ## Chat ops you will be asked to do (harness H4)
 
-- "mark <episode> listened" → check the `- [ ]` line in `log.md`, commit, push.
-- pasted `mark listened: <id>, <id>` (from the player's sync button) → ids are digest stems like `2026-07-13-news`; check the matching `log.md` lines (match by date + type), commit, push. The player only shows the checked state after the next rebuild+republish — no need to do one just for this; the daily routine's rebuild picks it up.
+- "mark <episode> listened" → check the `- [ ]` line in `log.md`, commit, push, then rebuild and republish the player (procedure below) so the checked state shows on next reload.
+- pasted `mark listened: <id>, <id>` (from the player's sync button) → ids are digest stems like `2026-07-13-news`; check the matching `log.md` lines (match by date + type), commit, push, then rebuild and republish the player (procedure below). The player only shows the checked state after a rebuild+republish, so do one as part of this op.
 - "add/disable source X" → edit `sources.md` (prefix a line with `x` to disable), commit, push.
 - "promote <topic>" → add unchecked item under Track E in `curriculum.md` (max 3 there), commit, push.
 - "rebuild and republish the player" → see procedure below.
