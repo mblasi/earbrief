@@ -38,3 +38,4 @@ Items get promoted here from the daily digest when something methodologically ne
 
 - [ ] E1. Autonomous attack chains: how JadePuffer's LLM agent planned, executed, and adapted a multi-stage ransomware operation end to end with no human re-prompting, and what that implies about the real ceiling on agent autonomy (2026-07-13)
 - [ ] E2. The Jacobian lens and the global workspace: how Anthropic's new probing technique found a compact "reportable" subspace inside Claude, what it borrows from global workspace theory, and what a runtime J-space check could catch that prompt-injection defenses miss (2026-07-14)
+- [ ] E3. Shared execution environments as attack surface: how the Dialogflow CX "Rogue Agent" flaw let one writable interpreter file compromise every agent in a multi-tenant runtime, and what it implies for isolating agent code execution (2026-07-15)
