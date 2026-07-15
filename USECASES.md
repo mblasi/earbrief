@@ -22,7 +22,7 @@ The weekly deep-dive follows `curriculum.md` order. **Harness:** H2, H3.
 
 ### UC3 — Track listened vs pending
 Player marks episodes automatically on-device (H3); `log.md` is the durable cross-device record. Sync is two-way but always passes through the repo:
-- **Repo → devices:** `build.py` bakes the checked ids from `log.md` into the player; each device applies them as listened on load (once per id, so a local un-check for replay sticks). Reaches devices on the next rebuild/republish — the daily routine's, or ask for one.
+- **Repo → devices:** `build.py` bakes the checked ids from `log.md` into the player; each device applies them as listened on load (once per id, so a local un-check for replay sticks). H4 rebuilds and republishes right after updating `log.md`, so the state reaches devices on the next player reload (the daily routine's rebuild also picks it up).
 - **Devices → repo:** episodes finished locally but unchecked in `log.md` surface a **sync N to log ⇪** pill in the player header; tapping copies `mark listened: <ids>` to the clipboard — paste it into any Claude chat and H4 updates `log.md`.
 The player still never writes anywhere (artifact CSP blocks all outbound requests — that's why the paste hop exists). Weekly routine flags a growing pending pile and shortens episodes if needed.
 
