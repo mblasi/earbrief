@@ -86,6 +86,24 @@
     cursor: pointer;
   }
   .stats .syncbtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .syncbox { margin-top: 0.6rem; }
+  .syncbox textarea {
+    width: 100%;
+    box-sizing: border-box;
+    font: 0.75rem/1.4 var(--mono);
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    padding: 0.45rem 0.55rem;
+    resize: none;
+  }
+  .syncbox .hint {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+  }
   .settings { margin-top: 0.75rem; font-size: 0.8rem; }
   .settings summary {
     cursor: pointer;
@@ -307,6 +325,10 @@
       <span class="pill"><b id="st-min">0</b> min in queue</span>
       <span class="pill"><b id="st-done">0</b> listened</span>
       <button class="pill syncbtn" id="st-sync" hidden></button>
+    </div>
+    <div class="syncbox" id="syncbox" hidden>
+      <textarea id="synctext" rows="2" readonly aria-label="Sync message to copy"></textarea>
+      <div class="hint">clipboard is blocked here — long-press the text above to copy it, then paste it to Claude</div>
     </div>
     <details class="settings">
       <summary>voices</summary>
@@ -611,15 +633,40 @@ $("t-play").onclick = () => {
   if (!cur) { const first = EPISODES.find(e => !epState(e.id).done); if (first) play(first.id); return; }
   playing ? pause() : play(cur);
 };
+// sandboxed hosts (the artifact viewer iframe) reject the async clipboard API
+// and swallow window.prompt without showing anything, so fall back in layers:
+// clipboard → execCommand copy → inline selectable text.
+function execCopy(t) {
+  const ta = document.createElement("textarea");
+  ta.value = t;
+  ta.style.cssText = "position:fixed;top:0;left:0;opacity:0;font-size:16px";
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  ta.setSelectionRange(0, t.length);
+  let ok = false;
+  try { ok = document.execCommand("copy"); } catch (e) {}
+  ta.remove();
+  return ok;
+}
 $("st-sync").onclick = async () => {
   const us = unsynced();
   if (!us.length) return;
   const msg = "mark listened: " + us.join(", ");
-  try {
-    await navigator.clipboard.writeText(msg);
+  let ok = false;
+  try { await navigator.clipboard.writeText(msg); ok = true; } catch (e) {}
+  if (!ok) ok = execCopy(msg);
+  if (ok) {
+    $("syncbox").hidden = true;
     $("st-sync").textContent = "copied ✓ — paste to Claude";
-  } catch (e) {
-    window.prompt("Copy this and paste it to Claude:", msg); // clipboard API unavailable
+  } else {
+    const ta = $("synctext");
+    ta.value = msg;
+    $("syncbox").hidden = false;
+    ta.focus();
+    ta.select();
+    ta.setSelectionRange(0, msg.length);
+    $("st-sync").textContent = "copy it below ↓";
   }
 };
 $("t-prev").onclick = () => seekPara(-1);
