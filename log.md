@@ -7,7 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
-- [ ] 2026-07-16 — news — A Coding Agent That Uploaded Your Home Directory, and a Trillion-Parameter Model You Can Actually Keep
+- [x] 2026-07-16 — news — A Coding Agent That Uploaded Your Home Directory, and a Trillion-Parameter Model You Can Actually Keep
 - [x] 2026-07-15 — news — A Rogue Agent, a Freelance Milestone, and Someone Built Doom in SQL
 - [x] 2026-07-14 — news — Claude's Hidden Workspace, and the Tokens Your Agent Burns Before It Reads You
 - [x] 2026-07-13 — news — Six Months to Live for Open Weights, and the Week Your Agent Became the Attack Surface
