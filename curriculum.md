@@ -36,6 +36,6 @@ The weekly deep-dive routine takes the **first unchecked item**, writes a ~20-mi
 
 Items get promoted here from the daily digest when something methodologically new lands. Keep 2-3 max; stale ones get dropped.
 
-- [ ] E2. The Jacobian lens and the global workspace: how Anthropic's new probing technique found a compact "reportable" subspace inside Claude, what it borrows from global workspace theory, and what a runtime J-space check could catch that prompt-injection defenses miss (2026-07-14)
 - [ ] E3. Shared execution environments as attack surface: how the Dialogflow CX "Rogue Agent" flaw let one writable interpreter file compromise every agent in a multi-tenant runtime, and what it implies for isolating agent code execution (2026-07-15)
 - [ ] E4. One model, three decoding modes: how NVIDIA's Nemotron-Labs-Diffusion lets a single model draft and verify its own tokens via self-speculation, why that sidesteps the draft-target alignment problem ordinary speculative decoding has to manage by hand, and what it costs in throughput versus a dedicated draft model (2026-07-16)
+- [ ] E5. Kimi Delta Attention: how Moonshot's linear-attention mechanism extends Gated DeltaNet with finer-grained gating to keep a fixed-size recurrent state instead of a linearly-growing KV cache, why interleaving full attention every fourth layer is enough to preserve long-range recall, and what it costs in exact recall versus standard attention (2026-07-17)
