@@ -7,7 +7,7 @@ The weekly deep-dive routine takes the **first unchecked item**, writes a ~20-mi
 ## Track A — How the model actually works
 
 - [x] A1. Inference from the inside: tokenization → embeddings → the forward pass, and what a "token" costs (2026-07-12)
-- [ ] A2. Attention mechanics: QKV, multi-head, causal masking — the actual matrices, no hand-waving
+- [x] A2. Attention mechanics: QKV, multi-head, causal masking — the actual matrices, no hand-waving (2026-07-18)
 - [ ] A3. The KV cache: why long context is a memory problem, prefill vs decode, and what that means for latency and pricing
 - [ ] A4. Sampling: temperature, top-p, logit bias, and why "the model is non-deterministic" is mostly false
 - [ ] A5. Positional encodings and context windows: RoPE, interpolation, why long-context isn't free
