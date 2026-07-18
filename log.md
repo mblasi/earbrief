@@ -7,6 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
+- [ ] 2026-07-18 — news — An Agent Wrote Its Own Ransomware Attack, and the Industry Started Building Guardrails to Match
 - [ ] 2026-07-17 — news — An AI Agent Broke In, an AI Agent Fixed It, and the Open-Weight Race Passed Two Trillion Parameters
 - [x] 2026-07-16 — news — A Coding Agent That Uploaded Your Home Directory, and a Trillion-Parameter Model You Can Actually Keep
 - [x] 2026-07-15 — news — A Rogue Agent, a Freelance Milestone, and Someone Built Doom in SQL
