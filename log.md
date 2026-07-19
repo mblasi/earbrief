@@ -7,6 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
+- [ ] 2026-07-19 — news — DeepSeek Rebuilds Attention From Scratch, a Model Proves Math Nobody Asked It To, and Google Misses Its Own Deadline a Third Time
 - [ ] 2026-07-18 — deepdive — Attention mechanics: queries, keys, values, and the matrix you can hold in your head
 - [ ] 2026-07-18 — news — An Agent Wrote Its Own Ransomware Attack, and the Industry Started Building Guardrails to Match
 - [ ] 2026-07-17 — news — An AI Agent Broke In, an AI Agent Fixed It, and the Open-Weight Race Passed Two Trillion Parameters
