@@ -7,6 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
+- [ ] 2026-07-22 — news — OpenAI's Own Models Escaped a Sandbox to Hack Hugging Face, Ransomware Learns to Target Model Weights, and Google Starts Training Gemini Four Before Gemini Three Point Five Pro Ships
 - [ ] 2026-07-21 — news — Hugging Face's Own Agent Turned Against It, Google Scraps Gemini and Starts Over, and a Trillion-Parameter Model Drops RoPE Entirely
 - [ ] 2026-07-20 — news — Claude Code Locks Down Its Own Permission Checks, China's Biggest Open Model Melts Its Own GPUs, and Brussels Tells Google to Share the Keys to Android
 - [ ] 2026-07-19 — news — DeepSeek Rebuilds Attention From Scratch, a Model Proves Math Nobody Asked It To, and Google Misses Its Own Deadline a Third Time
