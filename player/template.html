@@ -226,6 +226,29 @@
     gap: 0.3rem;
     cursor: pointer;
   }
+  .raterow {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    margin-top: 0.45rem;
+  }
+  .raterow .star {
+    font-size: 1.05rem;
+    line-height: 1;
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 0.15rem 0.2rem;
+  }
+  .raterow .star.on { color: var(--accent); }
+  .raterow .star:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .raterow .ratehint {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--muted);
+    margin-left: 0.3rem;
+  }
   .ep details.txt { margin-top: 0.6rem; }
   .ep details.txt summary {
     font-family: var(--mono);
@@ -368,13 +391,14 @@
 <script>
 const EPISODES = /*__EPISODES__*/[];
 const LISTENED = /*__LISTENED__*/[]; // ids checked in log.md at build time (repo = source of truth)
+const RATINGS = /*__RATINGS__*/{}; // id -> 1..5 star rating from log.md at build time
 const WPM = 150;
 const LS = "aib-v1";
 
 // ---------- state ----------
 let store = {};
 try { store = JSON.parse(localStorage.getItem(LS) || "{}"); } catch (e) { store = {}; }
-store.eps = store.eps || {};   // id -> {i: chunkIdx, l: lang the idx refers to, done: bool}
+store.eps = store.eps || {};   // id -> {i: chunkIdx, l: lang the idx refers to, done: bool, r: 1..5 rating}
 store.rate = store.rate || 1;
 store.lang = store.lang || "auto"; // auto | en | es
 if (typeof store.voice !== "object" || !store.voice) store.voice = { en: store.voice || "", es: "" };
@@ -389,10 +413,23 @@ LISTENED.forEach(id => {
   epState(id).done = true;
   store.synced.push(id);
 });
+// same seeding contract for ratings: apply each repo rating once, then the
+// local stars are free to disagree until the next sync round-trip
+store.syncedr = store.syncedr || {}; // id -> repo rating already applied on this device
+Object.keys(RATINGS).forEach(id => {
+  if (store.syncedr[id] === RATINGS[id]) return;
+  epState(id).r = RATINGS[id];
+  store.syncedr[id] = RATINGS[id];
+});
 save();
 // local plays the repo doesn't know about yet → offered by the sync button
 function unsynced() {
   return EPISODES.filter(e => epState(e.id).done && LISTENED.indexOf(e.id) === -1).map(e => e.id);
+}
+// local ratings the repo doesn't know about yet, as "id=n" pairs
+function unsyncedRatings() {
+  return EPISODES.filter(e => epState(e.id).r && epState(e.id).r !== RATINGS[e.id])
+    .map(e => e.id + "=" + epState(e.id).r);
 }
 
 // ---------- chunking (sentence groups <=190 chars, tagged with paragraph idx) ----------
@@ -553,6 +590,14 @@ function card(ep) {
     '<span class="spacer"></span>' +
     '<label class="donechk"><input type="checkbox" data-act="done"' + (st.done ? " checked" : "") + "> done</label>" +
     "</div>" +
+    (st.done || st.r
+      ? '<div class="raterow" role="group" aria-label="Rate this episode">' +
+        [1, 2, 3, 4, 5].map(n =>
+          '<button class="star' + ((st.r || 0) >= n ? " on" : "") + '" data-star="' + n +
+          '" aria-label="' + n + ' of 5 stars">' + ((st.r || 0) >= n ? "★" : "☆") + "</button>").join("") +
+        (st.r ? "" : '<span class="ratehint">rate it → steers future episodes</span>') +
+        "</div>"
+      : "") +
     '<details class="txt"><summary>transcript</summary><div class="transcript"></div></details>' +
     ((ep.sources || []).length ? '<details class="txt srcs"><summary>sources (' + ep.sources.length + ")</summary><ul class=\"sourcelist\"></ul></details>" : "");
   el.querySelector("h3").textContent = titleFor(ep);
@@ -588,6 +633,12 @@ function card(ep) {
   };
   el.querySelector('[data-act="play"]').onclick = () =>
     (playing && cur === ep.id) ? pause() : play(ep.id);
+  el.querySelectorAll("[data-star]").forEach(b => b.onclick = () => {
+    const s = epState(ep.id);
+    const n = +b.dataset.star;
+    s.r = s.r === n ? undefined : n; // tap the current rating again to clear it
+    save(); render();
+  });
   el.querySelector('[data-act="done"]').onchange = ev => {
     const s = epState(ep.id);
     s.done = ev.target.checked;
@@ -610,9 +661,9 @@ function render() {
   $("st-pending").textContent = nPend;
   $("st-done").textContent = nDone;
   $("st-min").textContent = minPend;
-  const us = unsynced();
-  $("st-sync").hidden = !us.length;
-  if (us.length) $("st-sync").textContent = "sync " + us.length + " to log ⇪";
+  const nSync = unsynced().length + unsyncedRatings().length;
+  $("st-sync").hidden = !nSync;
+  if (nSync) $("st-sync").textContent = "sync " + nSync + " to log ⇪";
   // transport
   const ep = epById(cur);
   $("t-play").textContent = playing ? "❚❚" : "▶";
@@ -650,9 +701,12 @@ function execCopy(t) {
   return ok;
 }
 $("st-sync").onclick = async () => {
-  const us = unsynced();
-  if (!us.length) return;
-  const msg = "mark listened: " + us.join(", ");
+  const us = unsynced(), ur = unsyncedRatings();
+  const parts = [];
+  if (us.length) parts.push("mark listened: " + us.join(", "));
+  if (ur.length) parts.push("rate: " + ur.join(", "));
+  if (!parts.length) return;
+  const msg = parts.join("; ");
   let ok = false;
   try { await navigator.clipboard.writeText(msg); ok = true; } catch (e) {}
   if (!ok) ok = execCopy(msg);

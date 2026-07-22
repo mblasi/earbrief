@@ -66,13 +66,22 @@ def norm(t):
     return re.sub(r"\s+", " ", t).strip().strip('"').lower()
 
 
-# listened state from log.md (source of truth) → baked into the player as seed
+# listened state + ratings from log.md (source of truth) → baked into the player as seed
 log_keys = set()
+log_ratings = {}
 for line in (root / "log.md").read_text(encoding="utf-8").splitlines():
-    m = re.match(r"-\s*\[x\]\s*(\S+)\s*—\s*(\w+)\s*—\s*(.+)$", line, re.I)
+    m = re.match(r"-\s*\[x\]\s*(\S+)\s*—\s*(\w+)\s*—\s*(.+?)(?:\s*—\s*★([1-5]))?\s*$", line, re.I)
     if m:
-        log_keys.add((m.group(1), m.group(2).lower(), norm(m.group(3))))
+        key = (m.group(1), m.group(2).lower(), norm(m.group(3)))
+        log_keys.add(key)
+        if m.group(4):
+            log_ratings[key] = int(m.group(4))
 listened = [e["id"] for e in episodes if (e["date"], e["type"], norm(e["title"])) in log_keys]
+ratings = {}
+for e in episodes:
+    key = (e["date"], e["type"], norm(e["title"]))
+    if key in log_ratings:
+        ratings[e["id"]] = log_ratings[key]
 matched = {(e["date"], e["type"], norm(e["title"])) for e in episodes}
 for k in log_keys - matched:
     print(f"warn log.md: checked entry matches no episode: {' — '.join(k)}")
@@ -82,10 +91,11 @@ out = tpl
 for marker, payload in (
     ("/*__EPISODES__*/[]", episodes),
     ("/*__LISTENED__*/[]", listened),
+    ("/*__RATINGS__*/{}", ratings),
 ):
     if marker not in out:
         raise SystemExit(f"template.html: marker {marker} not found")
     out = out.replace(marker, json.dumps(payload, ensure_ascii=False))
 (root / "player" / "player.html").write_text(out, encoding="utf-8")
 n_es = sum(1 for e in episodes if "text_es" in e)
-print(f"built player/player.html with {len(episodes)} episodes ({n_es} with Spanish, {len(listened)} listened per log.md)")
+print(f"built player/player.html with {len(episodes)} episodes ({n_es} with Spanish, {len(listened)} listened, {len(ratings)} rated per log.md)")

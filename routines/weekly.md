@@ -4,7 +4,7 @@ Get today's date with `date +%F` (call it TODAY).
 
 1. If a digests/TODAY-deepdive-*.md already exists, stop — nothing to do.
 2. Read curriculum.md. Your topic is the FIRST unchecked item in file order (Track E placeholder items with no real topic don't count). Note its ID (e.g. A2).
-3. Read the 2-3 most recent files in digests/ to match voice and avoid repeating explanations already given; earlier deep-dives may be referenced as 'a previous episode'.
+3. Read the 2-3 most recent files in digests/ to match voice and avoid repeating explanations already given; earlier deep-dives may be referenced as 'a previous episode'. Also read ratings in log.md (` — ★n` suffixes, 1–5): high-rated (★4–5) episodes show what resonates — let them steer the angle and level of depth within your topic; if the most recent rated deep-dive got ★1–2, deliberately change the approach (pacing, altitude, ratio of mechanism to context) rather than repeating it.
 4. Research the topic with WebSearch/WebFetch where it helps precision (papers, primary docs). Tier-2 entries in sources.md are good anchors.
 5. Write digests/TODAY-deepdive-<id-lowercase>.md IN ENGLISH (English is always the canonical language), at the deep-dive word count from config.md (~150 wpm spoken):
    - Frontmatter: title, date, type: deepdive, words (actual count).
