@@ -8,12 +8,12 @@ Format: `- [x] date — type — title` (checked = listened).
 
 <!-- newest first -->
 - [ ] 2026-07-22 — news — OpenAI's Own Models Escaped a Sandbox to Hack Hugging Face, Ransomware Learns to Target Model Weights, and Google Starts Training Gemini Four Before Gemini Three Point Five Pro Ships
-- [x] 2026-07-21 — news — Hugging Face's Own Agent Turned Against It, Google Scraps Gemini and Starts Over, and a Trillion-Parameter Model Drops RoPE Entirely
+- [x] 2026-07-21 — news — Hugging Face's Own Agent Turned Against It, Google Scraps Gemini and Starts Over, and a Trillion-Parameter Model Drops RoPE Entirely — ★4
 - [x] 2026-07-20 — news — Claude Code Locks Down Its Own Permission Checks, China's Biggest Open Model Melts Its Own GPUs, and Brussels Tells Google to Share the Keys to Android
-- [x] 2026-07-19 — news — DeepSeek Rebuilds Attention From Scratch, a Model Proves Math Nobody Asked It To, and Google Misses Its Own Deadline a Third Time
-- [x] 2026-07-18 — deepdive — Attention mechanics: queries, keys, values, and the matrix you can hold in your head
-- [x] 2026-07-18 — news — An Agent Wrote Its Own Ransomware Attack, and the Industry Started Building Guardrails to Match
-- [x] 2026-07-17 — news — An AI Agent Broke In, an AI Agent Fixed It, and the Open-Weight Race Passed Two Trillion Parameters
+- [x] 2026-07-19 — news — DeepSeek Rebuilds Attention From Scratch, a Model Proves Math Nobody Asked It To, and Google Misses Its Own Deadline a Third Time — ★5
+- [x] 2026-07-18 — deepdive — Attention mechanics: queries, keys, values, and the matrix you can hold in your head — ★5
+- [x] 2026-07-18 — news — An Agent Wrote Its Own Ransomware Attack, and the Industry Started Building Guardrails to Match — ★4
+- [x] 2026-07-17 — news — An AI Agent Broke In, an AI Agent Fixed It, and the Open-Weight Race Passed Two Trillion Parameters — ★4
 - [x] 2026-07-16 — news — A Coding Agent That Uploaded Your Home Directory, and a Trillion-Parameter Model You Can Actually Keep
 - [x] 2026-07-15 — news — A Rogue Agent, a Freelance Milestone, and Someone Built Doom in SQL
 - [x] 2026-07-14 — news — Claude's Hidden Workspace, and the Tokens Your Agent Burns Before It Reads You
