@@ -8,8 +8,8 @@ Each use case names the harness that serves it. A harness is whichever Claude-na
 |---|---|---|
 | H1 daily-digest routine | Scheduled cloud agent, daily (`routines/daily.md`) | reads `sources.md`, writes `digests/`, refreshes player |
 | H2 deep-dive routine | Scheduled cloud agent, weekly (`routines/weekly.md`) | reads `curriculum.md`, writes `digests/`, checks item off, refreshes player |
-| H3 player artifact | One web page on the phone: TTS playback, progress, listened state (localStorage seeded from `log.md` at build; sync button emits a paste-string) | on-device only |
-| H4 chat ops | Ad-hoc Claude Code session: "mark X listened", pasted `mark listened: <ids>` sync strings, "add source Y", "promote Z to curriculum" | `log.md`, `sources.md`, `curriculum.md` |
+| H3 player artifact | One web page on the phone: TTS playback, progress, listened state and star ratings (localStorage seeded from `log.md` at build; sync button emits a paste-string) | on-device only |
+| H4 chat ops | Ad-hoc Claude Code session: "mark X listened", "rate X 4", pasted `mark listened: <ids>` / `rate: <id>=<n>` sync strings, "add source Y", "promote Z to curriculum" | `log.md`, `sources.md`, `curriculum.md` |
 | H5 spark hook | Button in the player that opens a **new, external Claude session** prefilled with the episode context | none — fire and forget |
 
 ## Use cases
@@ -37,6 +37,9 @@ Sources and canonical episodes are always English; if `config.md` sets a seconda
 
 ### UC7 — Promote news to curriculum
 Digest flags deep-dive candidates; say "promote <topic>" (H4) and it lands in `curriculum.md` Track E, picked up by the next H2 run.
+
+### UC8 — Rate episodes to steer future content
+After finishing an episode, its card shows a 1–5 star row (H3, on-device; tap the current rating again to clear). Ratings reach the repo the same way listened state does: the sync pill's paste-string gains a `rate: <id>=<n>` segment, or say "rate <episode> 4" directly (H4). Either way the rating lands as a ` — ★n` suffix on the episode's `log.md` line and is baked back into the player on the next rebuild. Routines read it as an interest signal: H1 weights story ranking and Track E deep-dive flagging toward topics of ★4–5 episodes and away from ★1–2; H2 lets ratings steer the angle and depth of the next lesson. Rating is optional — unrated episodes contribute no signal. **Harness:** H3 captures, H4 persists, H1/H2 consume.
 
 ## Adding a use case
 

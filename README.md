@@ -39,6 +39,7 @@ Say these in any Claude session opened in the repo — no exact syntax required:
 |---|---|
 | "mark <episode> listened" | Checks the episode's line in `log.md`, commits, pushes. |
 | paste `mark listened: <id>, <id>` | The string the player's **sync** pill copies; checks the matching `log.md` lines. Devices see the update after the next rebuild (the daily routine's suffices). |
+| "rate <episode> 4" / paste `rate: <id>=<n>` | Appends a ` — ★n` rating to the episode's `log.md` line (the sync pill includes pending ratings too). Routines read ratings as an interest signal. |
 | "add source X" / "disable source Y" | Edits `sources.md` (disable = prefix the line with `x`); takes effect on the next routine run. |
 | "promote <topic>" | Adds the topic to `curriculum.md` Track E (max 3 items), queued for an upcoming deep-dive. |
 | "rebuild and republish the player" | Regenerates `player/player.html` from the digests and log, republishes the artifact at the same URL. |
@@ -51,6 +52,7 @@ The full contract lives in `USECASES.md`; in short:
 - **Stay current** — the daily routine writes a news digest from your sources; you hit play.
 - **Close the knowledge gap** — the weekly routine writes a deep-dive from the next unchecked curriculum item.
 - **Track listened vs pending** — the player tracks on-device; `log.md` is the durable record, synced both ways through git (rebuild bakes it in, the sync pill pastes it back).
+- **Rate to steer** — star an episode after listening (1–5); routines weight future stories and deep-dives toward what you rated high, away from what you rated low.
 - **Manage sources** — edit `sources.md` directly or via chat.
 - **Spark** — a button on any episode opens a fresh Claude session prefilled with that episode's context, for when a briefing wakes up an idea.
 - **Choose the listening language** — optional secondary-language rendition per episode, with AUTO/EN/ES modes and per-episode pinning.
