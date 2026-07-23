@@ -9,6 +9,8 @@ Your personal daily audio briefing, generated and narrated by Claude. No servers
 
 The template ships with one AI/ML engineering front as a worked example; your fronts, sources, and curricula are yours to define — any fields work.
 
+**[▶ Try the demo player](https://claude.ai/code/artifact/4c1db192-1d52-41a9-8cfb-6d31f9204e7d)** — three sample fronts, front switching, TTS playback, EN/ES, ratings. Sample state lives in `demo/`.
+
 ## Requirements
 
 - A Claude plan with **Claude Code**, **scheduled cloud agents (routines)**, and **artifacts**.
