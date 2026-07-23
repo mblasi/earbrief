@@ -7,6 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
+- [ ] 2026-07-23 — ai — news — Claude for Chrome's Unlocked Back Door Stays Open, OpenAI Builds an Agent That Rewrites Its Own Playbook, and Beijing Weighs Locking Up Open Weights
 - [ ] 2026-07-22 — ai — news — OpenAI's Own Models Escaped a Sandbox to Hack Hugging Face, Ransomware Learns to Target Model Weights, and Google Starts Training Gemini Four Before Gemini Three Point Five Pro Ships
 - [x] 2026-07-21 — ai — news — Hugging Face's Own Agent Turned Against It, Google Scraps Gemini and Starts Over, and a Trillion-Parameter Model Drops RoPE Entirely — ★4
 - [x] 2026-07-20 — ai — news — Claude Code Locks Down Its Own Permission Checks, China's Biggest Open Model Melts Its Own GPUs, and Brussels Tells Google to Share the Keys to Android
