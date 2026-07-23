@@ -1,73 +1,163 @@
-<title>AI Briefing</title>
+<title>Earbrief</title>
 <style>
+  /* --h is the accent hue: set on :root for the selected front, and per-card /
+     per-tab for each front's own color. Hue-derived colors (--accent & co.)
+     are declared on :root, .ep AND .ftab below — a custom property is
+     substituted where it is DECLARED, so a plain :root declaration would
+     ignore a card-level --h override. The theme blocks only set the
+     hue-independent knobs (--acc-s/l, --acc-ink-s/l) plus the page palette. */
   :root {
-    --ground: #f2f3f6;
+    --h: 28;
+    --acc-s: 72%; --acc-l: 38%;
+    --acc-ink-s: 0%; --acc-ink-l: 100%;
+    --ground: hsl(var(--h) 22% 96%);
+    --ground-2: hsl(var(--h) 30% 92%);
     --surface: #ffffff;
-    --surface-2: #e9ebf0;
-    --ink: #1f242e;
-    --muted: #5a6272;
-    --line: #d6dae2;
-    --accent: #b26b15;
-    --accent-ink: #ffffff;
-    --done: #3e7c4f;
+    --surface-2: hsl(var(--h) 16% 93%);
+    --glass: hsla(0, 0%, 100%, 0.82);
+    --ink: hsl(var(--h) 18% 14%);
+    --muted: hsl(var(--h) 10% 44%);
+    --line: hsl(var(--h) 14% 86%);
+    --done: hsl(140 42% 38%);
+    --shadow: 0 1px 2px hsl(var(--h) 30% 20% / 0.06), 0 8px 24px -12px hsl(var(--h) 30% 20% / 0.25);
+    --shadow-dock: 0 2px 6px hsl(var(--h) 30% 15% / 0.10), 0 16px 40px -12px hsl(var(--h) 30% 15% / 0.35);
     --mono: "JetBrains Mono", "SF Mono", ui-monospace, Menlo, Consolas, monospace;
     --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --ground: #14181f;
-      --surface: #1d232d;
-      --surface-2: #262d39;
-      --ink: #e9ecf1;
-      --muted: #8a93a5;
-      --line: #333b49;
-      --accent: #f0a03c;
-      --accent-ink: #1c1206;
-      --done: #6fbc85;
+      --acc-s: 88%; --acc-l: 64%;
+      --acc-ink-s: 60%; --acc-ink-l: 8%;
+      --ground: hsl(var(--h) 16% 9%);
+      --ground-2: hsl(var(--h) 20% 12%);
+      --surface: hsl(var(--h) 14% 13%);
+      --surface-2: hsl(var(--h) 12% 18%);
+      --glass: hsl(var(--h) 14% 13% / 0.82);
+      --ink: hsl(var(--h) 20% 92%);
+      --muted: hsl(var(--h) 8% 62%);
+      --line: hsl(var(--h) 10% 24%);
+      --done: hsl(140 45% 60%);
+      --shadow: 0 1px 2px hsl(0 0% 0% / 0.3), 0 8px 24px -12px hsl(0 0% 0% / 0.5);
+      --shadow-dock: 0 2px 6px hsl(0 0% 0% / 0.35), 0 16px 40px -12px hsl(0 0% 0% / 0.6);
     }
   }
   :root[data-theme="light"] {
-    --ground: #f2f3f6; --surface: #ffffff; --surface-2: #e9ebf0;
-    --ink: #1f242e; --muted: #5a6272; --line: #d6dae2;
-    --accent: #b26b15; --accent-ink: #ffffff; --done: #3e7c4f;
+    --acc-s: 72%; --acc-l: 38%; --acc-ink-s: 0%; --acc-ink-l: 100%;
+    --ground: hsl(var(--h) 22% 96%); --ground-2: hsl(var(--h) 30% 92%);
+    --surface: #ffffff; --surface-2: hsl(var(--h) 16% 93%);
+    --glass: hsla(0, 0%, 100%, 0.82);
+    --ink: hsl(var(--h) 18% 14%); --muted: hsl(var(--h) 10% 44%); --line: hsl(var(--h) 14% 86%);
+    --done: hsl(140 42% 38%);
+    --shadow: 0 1px 2px hsl(var(--h) 30% 20% / 0.06), 0 8px 24px -12px hsl(var(--h) 30% 20% / 0.25);
+    --shadow-dock: 0 2px 6px hsl(var(--h) 30% 15% / 0.10), 0 16px 40px -12px hsl(var(--h) 30% 15% / 0.35);
   }
   :root[data-theme="dark"] {
-    --ground: #14181f; --surface: #1d232d; --surface-2: #262d39;
-    --ink: #e9ecf1; --muted: #8a93a5; --line: #333b49;
-    --accent: #f0a03c; --accent-ink: #1c1206; --done: #6fbc85;
+    --acc-s: 88%; --acc-l: 64%; --acc-ink-s: 60%; --acc-ink-l: 8%;
+    --ground: hsl(var(--h) 16% 9%); --ground-2: hsl(var(--h) 20% 12%);
+    --surface: hsl(var(--h) 14% 13%); --surface-2: hsl(var(--h) 12% 18%);
+    --glass: hsl(var(--h) 14% 13% / 0.82);
+    --ink: hsl(var(--h) 20% 92%); --muted: hsl(var(--h) 8% 62%); --line: hsl(var(--h) 10% 24%);
+    --done: hsl(140 45% 60%);
+    --shadow: 0 1px 2px hsl(0 0% 0% / 0.3), 0 8px 24px -12px hsl(0 0% 0% / 0.5);
+    --shadow-dock: 0 2px 6px hsl(0 0% 0% / 0.35), 0 16px 40px -12px hsl(0 0% 0% / 0.6);
   }
+  :root, .ep, .ftab {
+    --accent: hsl(var(--h) var(--acc-s) var(--acc-l));
+    --accent-soft: hsl(var(--h) var(--acc-s) var(--acc-l) / 0.13);
+    --accent-ink: hsl(var(--h) var(--acc-ink-s) var(--acc-ink-l));
+  }
+  * { box-sizing: border-box; }
   html { background: var(--ground); }
   body {
     font-family: var(--sans);
     color: var(--ink);
-    background: var(--ground);
+    background: linear-gradient(180deg, var(--ground-2), var(--ground) 18rem);
     margin: 0;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
   }
   .wrap {
-    max-width: 40rem;
+    max-width: 42rem;
     margin: 0 auto;
-    padding: 1.25rem 1rem 9rem; /* room for transport bar */
+    padding: 1.25rem 1rem 10.5rem; /* room for the dock */
   }
-  header.top { margin-bottom: 1.5rem; }
-  .eyebrow {
+  header.top { margin-bottom: 1.25rem; }
+  .brand {
     font-family: var(--mono);
     font-size: 0.7rem;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .brand .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
   }
   h1 {
-    font-size: 1.35rem;
-    margin: 0.15rem 0 0.5rem;
-    letter-spacing: -0.01em;
+    font-size: 1.55rem;
+    font-weight: 750;
+    margin: 0.35rem 0 0.75rem;
+    letter-spacing: -0.02em;
     text-wrap: balance;
   }
+  /* ---- front switcher ---- */
+  .fronts {
+    display: flex;
+    gap: 0.4rem;
+    overflow-x: auto;
+    padding: 0.15rem 0.15rem 0.5rem;
+    margin: 0 -0.15rem 0.35rem;
+    scrollbar-width: none;
+  }
+  .fronts::-webkit-scrollbar { display: none; }
+  .ftab {
+    --h: var(--fh, 28);
+    font: 600 0.8rem/1 var(--sans);
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+    padding: 0.5rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--muted);
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s, color 0.15s, transform 0.1s;
+  }
+  .ftab:active { transform: scale(0.97); }
+  .ftab .fdot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent);
+    flex: none;
+  }
+  .ftab .n {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    padding: 0.1rem 0.38rem;
+    border-radius: 999px;
+    background: var(--surface-2);
+    color: var(--muted);
+  }
+  .ftab[aria-pressed="true"] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-ink);
+  }
+  .ftab[aria-pressed="true"] .fdot { background: var(--accent-ink); }
+  .ftab[aria-pressed="true"] .n { background: hsl(0 0% 100% / 0.22); color: var(--accent-ink); }
+  .ftab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  /* ---- stats ---- */
   .stats {
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
+    align-items: center;
     font-family: var(--mono);
     font-size: 0.72rem;
     color: var(--muted);
@@ -75,7 +165,7 @@
   .stats .pill {
     border: 1px solid var(--line);
     border-radius: 999px;
-    padding: 0.15rem 0.6rem;
+    padding: 0.22rem 0.65rem;
     background: var(--surface);
   }
   .stats .pill b { color: var(--ink); font-weight: 600; }
@@ -83,19 +173,19 @@
     font: inherit;
     border-color: var(--accent);
     color: var(--accent);
+    background: var(--accent-soft);
     cursor: pointer;
   }
   .stats .syncbtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .syncbox { margin-top: 0.6rem; }
   .syncbox textarea {
     width: 100%;
-    box-sizing: border-box;
     font: 0.75rem/1.4 var(--mono);
     color: var(--ink);
     background: var(--surface);
     border: 1px solid var(--accent);
-    border-radius: 6px;
-    padding: 0.45rem 0.55rem;
+    border-radius: 10px;
+    padding: 0.5rem 0.6rem;
     resize: none;
   }
   .syncbox .hint {
@@ -104,19 +194,14 @@
     color: var(--muted);
     margin-top: 0.25rem;
   }
-  .settings { margin-top: 0.75rem; font-size: 0.8rem; }
+  .settings { margin-top: 0.7rem; font-size: 0.8rem; }
   .settings summary {
     cursor: pointer;
     font-family: var(--mono);
     font-size: 0.72rem;
     color: var(--muted);
   }
-  .settings .vrow {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-  }
+  .settings .vrow { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; }
   .settings .vrow label {
     font-family: var(--mono);
     font-size: 0.68rem;
@@ -128,9 +213,9 @@
     min-width: 0;
     font: inherit;
     font-size: 0.8rem;
-    padding: 0.35rem 0.5rem;
+    padding: 0.4rem 0.5rem;
     border: 1px solid var(--line);
-    border-radius: 6px;
+    border-radius: 10px;
     background: var(--surface);
     color: var(--ink);
   }
@@ -140,78 +225,97 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--muted);
-    margin: 1.5rem 0 0.6rem;
+    margin: 1.6rem 0 0.7rem;
   }
-  .list { display: flex; flex-direction: column; gap: 0.6rem; }
+  .list { display: flex; flex-direction: column; gap: 0.75rem; }
+  /* ---- episode card ---- */
   .ep {
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 0.8rem 0.9rem 0.7rem;
+    border-radius: 18px;
+    padding: 0.95rem 1rem 0.85rem;
+    box-shadow: var(--shadow);
+    transition: border-color 0.15s, box-shadow 0.15s;
   }
-  .ep.current { border-color: var(--accent); }
+  .ep.current { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft), var(--shadow); }
   .ep .meta {
     display: flex;
     align-items: center;
-    gap: 0.55rem;
+    gap: 0.5rem;
+    flex-wrap: wrap;
     font-family: var(--mono);
-    font-size: 0.68rem;
+    font-size: 0.66rem;
     color: var(--muted);
     font-variant-numeric: tabular-nums;
   }
   .chip {
     font-family: var(--mono);
-    font-size: 0.62rem;
+    font-size: 0.6rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 0.1rem 0.45rem;
-    border-radius: 4px;
-    border: 1px solid var(--accent);
+    padding: 0.16rem 0.5rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    background: var(--accent-soft);
     color: var(--accent);
   }
   .chip.deepdive { background: var(--accent); color: var(--accent-ink); }
+  .chip.frontname { background: none; border-color: var(--line); color: var(--muted); }
   .langchip {
     font-family: var(--mono);
-    font-size: 0.62rem;
+    font-size: 0.6rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    padding: 0.1rem 0.4rem;
-    border-radius: 4px;
+    padding: 0.16rem 0.45rem;
+    border-radius: 999px;
     border: 1px solid var(--line);
     background: none;
     color: var(--muted);
     cursor: pointer;
   }
-  .langchip.pinned { border-color: var(--accent); color: var(--accent); }
+  .langchip.pinned { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
   .langchip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .ep h3 {
-    font-size: 0.98rem;
-    font-weight: 600;
-    margin: 0.4rem 0 0.55rem;
+    font-size: 1.02rem;
+    font-weight: 650;
+    margin: 0.45rem 0 0.6rem;
     line-height: 1.35;
+    letter-spacing: -0.01em;
     text-wrap: balance;
   }
   .bar {
-    height: 3px;
+    height: 4px;
     background: var(--surface-2);
-    border-radius: 2px;
+    border-radius: 3px;
     overflow: hidden;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.7rem;
   }
-  .bar i { display: block; height: 100%; width: 0; background: var(--accent); }
+  .bar i {
+    display: block; height: 100%; width: 0;
+    background: linear-gradient(90deg, hsl(var(--h) 80% 55%), var(--accent));
+    border-radius: 3px;
+  }
   .ep.done .bar i { background: var(--done); }
-  .row { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+  .row { display: flex; align-items: center; gap: 0.45rem; flex-wrap: wrap; }
   .btn {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    padding: 0.35rem 0.7rem;
-    border-radius: 6px;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.42rem 0.85rem;
+    border-radius: 999px;
     border: 1px solid var(--line);
     background: var(--surface);
     color: var(--ink);
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    text-decoration: none;
+    transition: transform 0.1s, background 0.15s;
   }
+  .btn:active { transform: scale(0.97); }
   .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .btn svg { width: 0.75rem; height: 0.75rem; flex: none; }
   .btn:focus-visible, summary:focus-visible, select:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
@@ -226,12 +330,8 @@
     gap: 0.3rem;
     cursor: pointer;
   }
-  .raterow {
-    display: flex;
-    align-items: center;
-    gap: 0.1rem;
-    margin-top: 0.45rem;
-  }
+  .donechk input { accent-color: var(--accent); }
+  .raterow { display: flex; align-items: center; gap: 0.1rem; margin-top: 0.5rem; }
   .raterow .star {
     font-size: 1.05rem;
     line-height: 1;
@@ -240,7 +340,9 @@
     color: var(--muted);
     cursor: pointer;
     padding: 0.15rem 0.2rem;
+    transition: transform 0.1s;
   }
+  .raterow .star:active { transform: scale(1.25); }
   .raterow .star.on { color: var(--accent); }
   .raterow .star:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .raterow .ratehint {
@@ -249,18 +351,14 @@
     color: var(--muted);
     margin-left: 0.3rem;
   }
-  .ep details.txt { margin-top: 0.6rem; }
+  .ep details.txt { margin-top: 0.65rem; }
   .ep details.txt summary {
     font-family: var(--mono);
     font-size: 0.68rem;
     color: var(--muted);
     cursor: pointer;
   }
-  .ep .transcript {
-    font-size: 0.9rem;
-    max-width: 65ch;
-    color: var(--ink);
-  }
+  .ep .transcript { font-size: 0.9rem; max-width: 65ch; color: var(--ink); }
   .transcript p { margin: 0.7em 0; }
   .transcript p.now {
     border-left: 2px solid var(--accent);
@@ -268,41 +366,45 @@
     margin-left: -0.66rem;
   }
   .ep details.srcs { margin-top: 0.35rem; }
-  .sourcelist {
-    margin: 0.4rem 0 0.2rem;
-    padding-left: 1.1rem;
-    font-size: 0.8rem;
-  }
+  .sourcelist { margin: 0.4rem 0 0.2rem; padding-left: 1.1rem; font-size: 0.8rem; }
   .sourcelist li { margin: 0.25em 0; }
-  .sourcelist a {
-    color: var(--accent);
-    text-decoration: none;
-    word-break: break-word;
-  }
+  .sourcelist a { color: var(--accent); text-decoration: none; word-break: break-word; }
   .sourcelist a:hover, .sourcelist a:focus-visible { text-decoration: underline; }
   .empty {
     color: var(--muted);
     font-size: 0.85rem;
     border: 1px dashed var(--line);
-    border-radius: 10px;
-    padding: 1rem;
+    border-radius: 18px;
+    padding: 1.2rem;
+    text-align: center;
   }
-  /* transport bar */
+  /* ---- transport dock ---- */
   .transport {
     position: fixed;
-    left: 0; right: 0; bottom: 0;
-    background: var(--surface);
-    border-top: 1px solid var(--line);
-    padding: 0.6rem 1rem calc(0.6rem + env(safe-area-inset-bottom));
+    left: 0; right: 0;
+    bottom: calc(0.75rem + env(safe-area-inset-bottom));
+    padding: 0 0.75rem;
+    pointer-events: none;
   }
-  .transport .inner { max-width: 40rem; margin: 0 auto; }
+  .transport .inner {
+    pointer-events: auto;
+    max-width: 42rem;
+    margin: 0 auto;
+    background: var(--glass);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    box-shadow: var(--shadow-dock);
+    padding: 0.7rem 0.9rem 0.75rem;
+  }
   .transport .title {
     font-size: 0.78rem;
     color: var(--muted);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-bottom: 0.45rem;
+    margin-bottom: 0.5rem;
   }
   .transport .title b { color: var(--ink); font-weight: 600; }
   .transport .controls { display: flex; align-items: center; gap: 0.5rem; }
@@ -311,38 +413,53 @@
     border: 1px solid var(--line);
     background: var(--surface);
     color: var(--ink);
-    border-radius: 8px;
-    padding: 0.5rem 0.8rem;
-    font-size: 0.8rem;
+    border-radius: 999px;
+    width: 2.6rem; height: 2.6rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
     cursor: pointer;
-    min-width: 3rem;
+    flex: none;
+    transition: transform 0.1s, background 0.15s;
   }
+  .tbtn:active { transform: scale(0.94); }
+  .tbtn svg { width: 1rem; height: 1rem; }
   .tbtn.play {
-    background: var(--accent);
+    background: linear-gradient(145deg, hsl(var(--h) 80% 52%), var(--accent));
     border-color: var(--accent);
     color: var(--accent-ink);
-    font-size: 1rem;
-    padding: 0.55rem 1.4rem;
-    font-weight: 700;
+    width: 3.4rem; height: 3.4rem;
+    box-shadow: 0 6px 16px -6px var(--accent);
   }
+  .tbtn.play svg { width: 1.3rem; height: 1.3rem; }
+  .tbtn.txt { width: auto; padding: 0 0.75rem; }
   .tbtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .tbar {
-    height: 3px;
+    height: 4px;
     background: var(--surface-2);
-    border-radius: 2px;
+    border-radius: 3px;
     overflow: hidden;
-    margin-top: 0.55rem;
+    margin-top: 0.6rem;
   }
-  .tbar i { display: block; height: 100%; width: 0; background: var(--accent); }
+  .tbar i {
+    display: block; height: 100%; width: 0;
+    background: linear-gradient(90deg, hsl(var(--h) 80% 55%), var(--accent));
+    border-radius: 3px;
+  }
   @media (prefers-reduced-motion: no-preference) {
     .bar i, .tbar i { transition: width 0.3s ease; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ftab, .btn, .tbtn, .raterow .star { transition: none; }
   }
 </style>
 
 <div class="wrap">
   <header class="top">
-    <div class="eyebrow">ai-briefing · on air</div>
-    <h1>Your briefing queue</h1>
+    <div class="brand"><span class="dot"></span>earbrief · <span id="brand-front">on air</span></div>
+    <h1 id="headline">Your briefing queue</h1>
+    <nav class="fronts" id="fronts" aria-label="Fronts" hidden></nav>
     <div class="stats">
       <span class="pill"><b id="st-pending">0</b> pending</span>
       <span class="pill"><b id="st-min">0</b> min in queue</span>
@@ -361,7 +478,7 @@
   </header>
 
   <section>
-    <h2>Pending</h2>
+    <h2>Up next</h2>
     <div class="list" id="pending"></div>
   </section>
 
@@ -377,23 +494,26 @@
   <div class="inner">
     <div class="title" id="t-title">Nothing playing — pick an episode</div>
     <div class="controls">
-      <button class="tbtn" id="t-prev" aria-label="Previous paragraph">⇤¶</button>
-      <button class="tbtn play" id="t-play" aria-label="Play or pause">▶</button>
-      <button class="tbtn" id="t-next" aria-label="Next paragraph">¶⇥</button>
+      <button class="tbtn" id="t-prev" aria-label="Previous paragraph"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3 2h2v12H3zM13 2 6 8l7 6z"/></svg></button>
+      <button class="tbtn play" id="t-play" aria-label="Play or pause"><svg id="t-play-ico" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg></button>
+      <button class="tbtn" id="t-next" aria-label="Next paragraph"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M11 2h2v12h-2zM3 2l7 6-7 6z"/></svg></button>
       <span class="spacer"></span>
-      <button class="tbtn" id="t-lang" aria-label="Listening language (auto: news in Spanish, deep-dives in English)">AUTO</button>
-      <button class="tbtn" id="t-rate" aria-label="Playback speed">1×</button>
+      <button class="tbtn txt" id="t-lang" aria-label="Listening language (auto: news in Spanish, deep-dives in English)">AUTO</button>
+      <button class="tbtn txt" id="t-rate" aria-label="Playback speed">1×</button>
     </div>
     <div class="tbar"><i id="t-bar"></i></div>
   </div>
 </div>
 
 <script>
+const FRONTS = /*__FRONTS__*/[]; // [{id, label, hue}] display order; >1 → switcher shows
 const EPISODES = /*__EPISODES__*/[];
 const LISTENED = /*__LISTENED__*/[]; // ids checked in log.md at build time (repo = source of truth)
 const RATINGS = /*__RATINGS__*/{}; // id -> 1..5 star rating from log.md at build time
 const WPM = 150;
 const LS = "aib-v1";
+const ICO_PLAY = '<path d="M4 2.5v11l9-5.5z"/>';
+const ICO_PAUSE = '<path d="M3.5 2.5h3v11h-3zM9.5 2.5h3v11h-3z"/>';
 
 // ---------- state ----------
 let store = {};
@@ -401,6 +521,8 @@ try { store = JSON.parse(localStorage.getItem(LS) || "{}"); } catch (e) { store 
 store.eps = store.eps || {};   // id -> {i: chunkIdx, l: lang the idx refers to, done: bool, r: 1..5 rating}
 store.rate = store.rate || 1;
 store.lang = store.lang || "auto"; // auto | en | es
+store.front = store.front || "all"; // selected front id, or "all"
+if (store.front !== "all" && !FRONTS.some(f => f.id === store.front)) store.front = "all";
 if (typeof store.voice !== "object" || !store.voice) store.voice = { en: store.voice || "", es: "" };
 store.synced = store.synced || []; // repo-listened ids already applied on this device
 function save() { localStorage.setItem(LS, JSON.stringify(store)); }
@@ -430,6 +552,15 @@ function unsynced() {
 function unsyncedRatings() {
   return EPISODES.filter(e => epState(e.id).r && epState(e.id).r !== RATINGS[e.id])
     .map(e => e.id + "=" + epState(e.id).r);
+}
+
+// ---------- fronts ----------
+function frontOf(ep) { return FRONTS.find(f => f.id === ep.front) || { id: ep.front, label: ep.front, hue: 28 }; }
+function inView(ep) { return store.front === "all" || ep.front === store.front; }
+function viewEpisodes() { return EPISODES.filter(inView); }
+function applyFrontTheme() {
+  const f = FRONTS.find(x => x.id === store.front);
+  document.documentElement.style.setProperty("--h", f ? f.hue : 28);
 }
 
 // ---------- chunking (sentence groups <=190 chars, tagged with paragraph idx) ----------
@@ -555,7 +686,7 @@ function seekPara(dir) {
 // ---------- spark hook (UC5): fire an external Claude session ----------
 function sparkURL(ep) {
   const firstPara = ep.text.split(/\n\s*\n/)[0].slice(0, 400);
-  const q = `While listening to my ai-briefing episode "${ep.title}" (${ep.date}, ${ep.type}), an idea sparked. The episode opens with: "${firstPara}". Ask me what the idea is, then help me deep-dive it. This session is independent of the briefing pipeline.`;
+  const q = `While listening to my earbrief episode "${ep.title}" (${ep.date}, ${ep.type}, front: ${frontOf(ep).label}), an idea sparked. The episode opens with: "${firstPara}". Ask me what the idea is, then help me deep-dive it. This session is independent of the briefing pipeline.`;
   return "https://claude.ai/new?q=" + encodeURIComponent(q);
 }
 
@@ -575,17 +706,21 @@ function card(ep) {
   const st = syncLang(ep);
   const el = document.createElement("article");
   el.className = "ep" + (st.done ? " done" : "") + (cur === ep.id ? " current" : "");
+  el.style.setProperty("--h", frontOf(ep).hue); // card wears its front's color
   const chipCls = ep.type === "deepdive" ? "chip deepdive" : "chip";
   const chipTxt = ep.type === "deepdive" ? "deep dive" : "news";
   el.innerHTML =
     '<div class="meta"><span class="' + chipCls + '">' + chipTxt + "</span>" +
+    (store.front === "all" && FRONTS.length > 1 ? '<span class="chip frontname"></span>' : "") +
     '<button class="langchip' + (st.o ? " pinned" : "") + '" data-act="lang" title="Tap to pin the language for this episode">' + langFor(ep) + (st.o ? " ✱" : "") + "</button>" +
     "<span>" + ep.date + "</span><span>~" + mins(ep) + " min</span>" +
     (st.done ? '<span style="color:var(--done)">✓ listened</span>' : "") + "</div>" +
     "<h3></h3>" +
     '<div class="bar"><i style="width:' + pct(ep) + '%"></i></div>' +
     '<div class="row">' +
-    '<button class="btn primary" data-act="play">' + (st.i > 0 && !st.done ? "Resume" : (st.done ? "Replay" : "Play")) + "</button>" +
+    '<button class="btn primary" data-act="play"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">' +
+    (playing && cur === ep.id ? ICO_PAUSE : ICO_PLAY) + "</svg>" +
+    (playing && cur === ep.id ? "Pause" : (st.i > 0 && !st.done ? "Resume" : (st.done ? "Replay" : "Play"))) + "</button>" +
     '<a class="btn" href="' + sparkURL(ep) + '" target="_blank" rel="noopener">✦ Spark</a>' +
     '<span class="spacer"></span>' +
     '<label class="donechk"><input type="checkbox" data-act="done"' + (st.done ? " checked" : "") + "> done</label>" +
@@ -601,6 +736,8 @@ function card(ep) {
     '<details class="txt"><summary>transcript</summary><div class="transcript"></div></details>' +
     ((ep.sources || []).length ? '<details class="txt srcs"><summary>sources (' + ep.sources.length + ")</summary><ul class=\"sourcelist\"></ul></details>" : "");
   el.querySelector("h3").textContent = titleFor(ep);
+  const fn = el.querySelector(".frontname");
+  if (fn) fn.textContent = frontOf(ep).label;
   const sl = el.querySelector(".sourcelist");
   if (sl) ep.sources.forEach(s => {
     const li = document.createElement("li");
@@ -648,16 +785,43 @@ function card(ep) {
   };
   return el;
 }
+function renderFronts() {
+  const nav = $("fronts");
+  nav.hidden = FRONTS.length < 2;
+  if (nav.hidden) return;
+  nav.innerHTML = "";
+  const pendIn = fid => EPISODES.filter(e => (fid === "all" || e.front === fid) && !epState(e.id).done).length;
+  [{ id: "all", label: "All", hue: 28 }].concat(FRONTS).forEach(f => {
+    const b = document.createElement("button");
+    b.className = "ftab";
+    b.style.setProperty("--fh", f.hue);
+    b.setAttribute("aria-pressed", store.front === f.id);
+    const n = pendIn(f.id);
+    b.innerHTML = '<span class="fdot"></span><span class="lbl"></span>' + (n ? '<span class="n">' + n + "</span>" : "");
+    b.querySelector(".lbl").textContent = f.label;
+    b.onclick = () => {
+      store.front = f.id;
+      save();
+      applyFrontTheme();
+      render();
+    };
+    nav.appendChild(b);
+  });
+}
 function render() {
+  renderFronts();
+  const curFront = FRONTS.find(f => f.id === store.front);
+  $("brand-front").textContent = curFront ? curFront.label.toLowerCase() : "all fronts";
+  $("headline").textContent = curFront ? curFront.label : "Your briefing queue";
   const pend = $("pending"), done = $("donelist");
   pend.innerHTML = ""; done.innerHTML = "";
   let nPend = 0, nDone = 0, minPend = 0;
-  EPISODES.forEach(ep => {
+  viewEpisodes().forEach(ep => {
     const c = card(ep);
     if (epState(ep.id).done) { done.appendChild(c); nDone++; }
     else { pend.appendChild(c); nPend++; minPend += mins(ep); }
   });
-  if (!nPend) pend.innerHTML = '<div class="empty">Queue clear. Next episode lands with the morning routine.</div>';
+  if (!nPend) pend.innerHTML = '<div class="empty">Queue clear' + (curFront ? " on this front" : "") + ". Next episode lands with the morning routine.</div>";
   $("st-pending").textContent = nPend;
   $("st-done").textContent = nDone;
   $("st-min").textContent = minPend;
@@ -666,7 +830,7 @@ function render() {
   if (nSync) $("st-sync").textContent = "sync " + nSync + " to log ⇪";
   // transport
   const ep = epById(cur);
-  $("t-play").textContent = playing ? "❚❚" : "▶";
+  $("t-play-ico").innerHTML = playing ? ICO_PAUSE : ICO_PLAY;
   $("t-rate").textContent = store.rate + "×";
   $("t-lang").textContent = store.lang === "auto" ? "AUTO" : store.lang.toUpperCase();
   if (ep) {
@@ -681,7 +845,7 @@ function render() {
 
 // ---------- wire up ----------
 $("t-play").onclick = () => {
-  if (!cur) { const first = EPISODES.find(e => !epState(e.id).done); if (first) play(first.id); return; }
+  if (!cur) { const first = viewEpisodes().find(e => !epState(e.id).done); if (first) play(first.id); return; }
   playing ? pause() : play(cur);
 };
 // sandboxed hosts (the artifact viewer iframe) reject the async clipboard API
@@ -775,5 +939,6 @@ document.addEventListener("visibilitychange", async () => {
     try { wakeLock = await navigator.wakeLock.request("screen"); } catch (e) {}
   }
 });
+applyFrontTheme();
 render();
 </script>
