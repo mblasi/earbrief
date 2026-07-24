@@ -7,6 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
+- [ ] 2026-07-24 — ai — news — Two Chip Makers Split One Inference Request in Half, Kimi K3's Serving Stack Ships Before Its Weights Do, and the White House's Distillation Math Doesn't Add Up
 - [x] 2026-07-23 — ai — news — Claude for Chrome's Unlocked Back Door Stays Open, OpenAI Builds an Agent That Rewrites Its Own Playbook, and Beijing Weighs Locking Up Open Weights — ★2
 - [x] 2026-07-22 — ai — news — OpenAI's Own Models Escaped a Sandbox to Hack Hugging Face, Ransomware Learns to Target Model Weights, and Google Starts Training Gemini Four Before Gemini Three Point Five Pro Ships — ★2
 - [x] 2026-07-21 — ai — news — Hugging Face's Own Agent Turned Against It, Google Scraps Gemini and Starts Over, and a Trillion-Parameter Model Drops RoPE Entirely — ★4
