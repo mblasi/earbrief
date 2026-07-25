@@ -7,6 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
+- [ ] 2026-07-25 — ai — deepdive — The KV cache: the load-bearing wall of the serving stack
 - [ ] 2026-07-25 — ai — news — Claude Opus 5 Triples Its Reasoning Score Overnight, Freelance Automation Quietly Crosses Sixteen Percent, and the Next Trillion-Parameter Model Bets on Being Fat But Sparse
 - [x] 2026-07-24 — ai — news — Two Chip Makers Split One Inference Request in Half, Kimi K3's Serving Stack Ships Before Its Weights Do, and the White House's Distillation Math Doesn't Add Up — ★4
 - [x] 2026-07-23 — ai — news — Claude for Chrome's Unlocked Back Door Stays Open, OpenAI Builds an Agent That Rewrites Its Own Playbook, and Beijing Weighs Locking Up Open Weights — ★2
