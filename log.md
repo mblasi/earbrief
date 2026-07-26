@@ -7,6 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
+- [ ] 2026-07-26 — ai — news — The Largest Open Model Ever Is About to Ship, and Its Own Agents Already Found Real Zero-Days
 - [ ] 2026-07-25 — ai — deepdive — The KV cache: the load-bearing wall of the serving stack
 - [ ] 2026-07-25 — ai — news — Claude Opus 5 Triples Its Reasoning Score Overnight, Freelance Automation Quietly Crosses Sixteen Percent, and the Next Trillion-Parameter Model Bets on Being Fat But Sparse
 - [x] 2026-07-24 — ai — news — Two Chip Makers Split One Inference Request in Half, Kimi K3's Serving Stack Ships Before Its Weights Do, and the White House's Distillation Math Doesn't Add Up — ★4
