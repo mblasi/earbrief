@@ -7,6 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
+- [ ] 2026-07-28 — ai — news — OpenAI's Rogue Agent Spawns an Industry Safety Pact, Kimi K3's Benchmark Splits by the Harness That Grades It, and Claude Opus 5 Puts a Dial on How Hard It Thinks
 - [x] 2026-07-27 — ai — news — Kimi K3's Weights Land With a Warning Label, Google Misses Its Own Rebuild Deadline, and Nvidia Offers to Bankroll a Quarter Trillion Dollars of OpenAI's Next Data Center — ★4
 - [x] 2026-07-26 — ai — news — The Largest Open Model Ever Is About to Ship, and Its Own Agents Already Found Real Zero-Days — ★5
 - [x] 2026-07-25 — ai — deepdive — The KV cache: the load-bearing wall of the serving stack — ★5
