@@ -11,8 +11,9 @@ Bring template files up to date from the upstream earbrief repo. Personal state 
 
 - `player/build.py`, `player/template.html`
 - `routines/daily.md`, `routines/weekly.md`
-- `.claude/` (skills, including this one)
-- `USECASES.md`, `README.md`, `CLAUDE.md`, `.gitignore`
+- `.opencode/` (skills, including this one)
+- `.github/workflows/` (deployment and scheduled workflows)
+- `USECASES.md`, `README.md`, `AGENTS.md`, `.gitignore`
 
 ## Files owned by the instance (NEVER updated)
 
@@ -32,6 +33,6 @@ Bring template files up to date from the upstream earbrief repo. Personal state 
    3. `mkdir -p fronts/<id>`, then `git mv sources.md fronts/<id>/sources.md`, `git mv curriculum.md fronts/<id>/curriculum.md` (if present), `git mv digests fronts/<id>/digests`.
    4. Write `fronts/<id>/front.md` following the shape of the template's `fronts/ai/front.md`: `- id:`, `- label:`, `- hue:` (0–360, pick one that fits the domain), `- order: 1`, `- enabled: true`, plus an `## Editorial identity` paragraph distilled from the moved sources.md's editorial rules.
    5. Rewrite the episode lines in `log.md` from `- [ ] date — type — title` to `- [ ] date — <id> — type — title` (preserve `[x]` checkboxes and ` — ★n` suffixes; touch nothing else in the file).
-   6. Tell the user they can now open more fronts: "add front <name>" in any Claude session in this repo.
-7. If `player/template.html` or `player/build.py` changed, or a migration ran: rebuild (`python3 player/build.py` — the episode count must survive a migration unchanged, all episodes attributed to the new front), syntax-check the embedded script (see CLAUDE.md rebuild procedure), and republish the artifact with the `url` from config.md.
+   6. Tell the user they can now open more fronts: "add front <name>" in any AI agent session in this repo.
+7. If `player/template.html` or `player/build.py` changed, or a migration ran: rebuild (`python3 player/build.py` — the episode count must survive a migration unchanged, all episodes attributed to the new front), syntax-check the embedded script (see AGENTS.md rebuild procedure), commit and push to trigger GitHub Pages deployment.
 8. Commit `update from upstream template` (append ` + fronts migration` if step 6 ran), push.

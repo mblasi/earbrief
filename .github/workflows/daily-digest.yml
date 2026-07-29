@@ -1,0 +1,50 @@
+name: Daily Digest
+
+on:
+  schedule:
+    # Default: 07:00 UTC daily - customize in config.md during setup
+    - cron: '0 7 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      # TODO: Integrate with AI agent API (OpenAI, Anthropic, etc.)
+      # For now, this is a placeholder. The workflow needs to:
+      # 1. Read routines/daily.md for instructions
+      # 2. Call an AI agent with those instructions
+      # 3. Let the AI agent read sources, research, write digests
+      # 4. Commit and push the changes
+      # 5. Rebuild the player and trigger deployment
+      
+      - name: Run daily digest generation
+        run: |
+          echo "Daily digest generation requires AI agent integration"
+          echo "See routines/daily.md for the instructions the AI agent should follow"
+          echo "Configure API keys (OPENAI_API_KEY, ANTHROPIC_API_KEY, etc.) as GitHub secrets"
+          exit 1
+        env:
+          # Add your AI provider API keys as GitHub secrets
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}

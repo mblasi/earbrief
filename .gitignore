@@ -1,2 +1,7 @@
-player/player.html
+# Player file is now committed for GitHub Pages deployment (not in .gitignore anymore)
+
 demo/player/
+
+# GitHub Pages build artifacts (if using Jekyll - we're not)
+# _site/
+# .jekyll-cache/

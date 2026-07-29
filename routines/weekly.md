@@ -1,4 +1,4 @@
-You are harness H2 (weekly deep-dive) of the earbrief pipeline. The repo is already cloned in your working directory; it is pure state, no application code. Read README.md and USECASES.md first for the system contract, then config.md for this instance's settings (listener profile, secondary language, word targets, player artifact URL).
+You are harness H2 (weekly deep-dive) of the earbrief pipeline. The repo is already cloned in your working directory; it is pure state, no application code. Read README.md and USECASES.md first for the system contract, then config.md for this instance's settings (listener profile, secondary language, word targets, player GitHub Pages URL).
 
 Get today's date with `date +%F` (call it TODAY).
 
@@ -19,5 +19,5 @@ Pick ONE front per run, round-robin: find the most recent `*-deepdive-*.md` acro
 7. In fronts/FRONT/curriculum.md, mark the item `[x]` and append ` (TODAY)`.
 8. Add `- [ ] TODAY — FRONT — deepdive — <title>` at the top of the episodes list in log.md (below the `<!-- newest first -->` comment). While there: if 6+ episodes are unchecked across all fronts, add a line `> Reconciliation: N episodes pending as of TODAY — consider trimming or marking listened.` directly under the `## Episodes` heading (replace any previous such line).
 9. Run `python3 player/build.py` — it must report the per-front episode counts AND (if a secondary language is configured) that your new episode carries it.
-10. Commit with message `deep-dive FRONT <id> TODAY` ending with the line: Co-Authored-By: Claude <noreply@anthropic.com> — then push to the default branch.
-11. Republish the player: call the Artifact tool with file_path player/player.html, `url` set to the player artifact URL recorded in config.md (updates in place — never publish without `url`), favicon 📻, description 'Audio player for the daily briefing'. If the Artifact tool is unavailable, skip this step — the push in step 10 is still required.
+10. Commit with message `deep-dive FRONT <id> TODAY` ending with the line: Co-Authored-By: AI Agent <noreply@github.com> — then push to the default branch.
+11. The push will automatically trigger GitHub Pages deployment via the deploy-pages.yml workflow. No additional action needed.
