@@ -1,4 +1,4 @@
-You are harness H1 (daily news digest) of the earbrief pipeline. The repo is already cloned in your working directory; it is pure state, no application code. Read README.md and USECASES.md first for the system contract, then config.md for this instance's settings (listener profile, secondary language, word targets, player artifact URL).
+You are harness H1 (daily news digest) of the earbrief pipeline. The repo is already cloned in your working directory; it is pure state, no application code. Read README.md and USECASES.md first for the system contract, then config.md for this instance's settings (listener profile, secondary language, word targets, player GitHub Pages URL).
 
 Get today's date with `date +%F` (call it TODAY).
 
@@ -23,5 +23,5 @@ For each enabled front (call its id FRONT):
 Once every enabled front is done:
 
 8. Run `python3 player/build.py` — it must report the per-front episode counts AND (if a secondary language is configured) that your new episodes carry it.
-9. Commit everything with message `daily digest TODAY` ending with the line: Co-Authored-By: Claude <noreply@anthropic.com> — then push to the default branch.
-10. Republish the player: call the Artifact tool with file_path player/player.html, `url` set to the player artifact URL recorded in config.md (this updates it in place — never publish without `url`), favicon 📻, description 'Audio player for the daily briefing'. If the Artifact tool is unavailable in this environment, skip this step — the push in step 9 is still required.
+9. Commit everything with message `daily digest TODAY` ending with the line: Co-Authored-By: AI Agent <noreply@github.com> — then push to the default branch.
+10. The push will automatically trigger GitHub Pages deployment via the deploy-pages.yml workflow. No additional action needed.

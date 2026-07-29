@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compile fronts/*/digests/*.md into player/player.html. Stdlib only.
+"""Compile fronts/*/digests/*.md into player/player.html for GitHub Pages deployment. Stdlib only.
 
 A front is a directory under fronts/ with a front.md (metadata), its own
 sources.md/curriculum.md, and a digests/ folder. Episode ids are

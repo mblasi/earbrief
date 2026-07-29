@@ -468,7 +468,7 @@
     </div>
     <div class="syncbox" id="syncbox" hidden>
       <textarea id="synctext" rows="2" readonly aria-label="Sync message to copy"></textarea>
-      <div class="hint">clipboard is blocked here — long-press the text above to copy it, then paste it to Claude</div>
+      <div class="hint">clipboard is blocked here — long-press the text above to copy it, then paste it to your AI assistant</div>
     </div>
     <details class="settings">
       <summary>voices</summary>
@@ -683,10 +683,11 @@ function seekPara(dir) {
   render();
 }
 
-// ---------- spark hook (UC5): fire an external Claude session ----------
+// ---------- spark hook (UC5): fire an external AI chat session ----------
 function sparkURL(ep) {
   const firstPara = ep.text.split(/\n\s*\n/)[0].slice(0, 400);
   const q = `While listening to my earbrief episode "${ep.title}" (${ep.date}, ${ep.type}, front: ${frontOf(ep).label}), an idea sparked. The episode opens with: "${firstPara}". Ask me what the idea is, then help me deep-dive it. This session is independent of the briefing pipeline.`;
+  // Default to Claude, but users can customize to their preferred AI assistant
   return "https://claude.ai/new?q=" + encodeURIComponent(q);
 }
 
@@ -876,7 +877,7 @@ $("st-sync").onclick = async () => {
   if (!ok) ok = execCopy(msg);
   if (ok) {
     $("syncbox").hidden = true;
-    $("st-sync").textContent = "copied ✓ — paste to Claude";
+    $("st-sync").textContent = "copied ✓ — paste to your AI assistant";
   } else {
     const ta = $("synctext");
     ta.value = msg;
