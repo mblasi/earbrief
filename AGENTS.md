@@ -1,10 +1,10 @@
-# earbrief — operating instructions for Claude
+# earbrief — operating instructions for AI agents
 
 This repo is the state of a personal news/learning audio pipeline. No application code; **README.md** is the architecture, **USECASES.md** is the use-case/harness contract. Read both before changing anything.
 
-**First run:** if `config.md` does not exist, this instance is not initialized — run the `setup` skill before anything else.
+**Architecture:** This instance uses GitHub Actions workflows (`.github/workflows/`) for content generation and GitHub Pages for the player. The workflows currently require AI API integration to be functional.
 
-Instance values (player artifact URL, routine IDs, schedule, languages, listener profile) live in `config.md`. The instance is split into **fronts** — independent topic areas under `fronts/<id>/`, each with its own `front.md` (metadata), `sources.md`, optional `curriculum.md`, and `digests/`. `log.md` is global, one line per episode with a front column. Episode ids are front-qualified: `<front>/<digest-stem>`, e.g. `ai/2026-07-13-news`.
+Instance values (player URL, schedule, languages, listener profile) live in `config.md`. The instance is split into **fronts** — independent topic areas under `fronts/<id>/`, each with its own `front.md` (metadata), `sources.md`, optional `curriculum.md`, and `digests/`. `log.md` is global, one line per episode with a front column. Episode ids are front-qualified: `<front>/<digest-stem>`, e.g. `ai/2026-07-13-news`.
 
 ## Chat ops you will be asked to do (harness H4)
 
@@ -16,14 +16,14 @@ Instance values (player artifact URL, routine IDs, schedule, languages, listener
 - "add front <name>" → create `fronts/<slug>/` with a `front.md` (follow the shape of an existing one; pick an unused hue, next `order`), a researched `sources.md` for that area, a `curriculum.md` only if the user wants deep-dives there, and `digests/.gitkeep`. Commit, push, rebuild and republish the player so the new front's tab appears.
 - "disable/enable front <name>" → flip `enabled:` in its `front.md`, commit, push, rebuild and republish (disabled fronts drop out of the player and the routines; their files stay).
 - "rebuild and republish the player" → see procedure below.
-- "update from upstream" → run the `update` skill.
+- "update from upstream" → fetch and merge template improvements from upstream remote.
 
 ## Player rebuild procedure
 
 1. `python3 player/build.py` — must print the per-front episode counts; heed paragraph-mismatch warnings.
-2. If `player/template.html` was edited, syntax-check the embedded script before publishing (an unescaped quote once broke the whole player):
+2. If `player/template.html` was edited, syntax-check the embedded script before committing (an unescaped quote once broke the whole player):
    `node -e "const h=require('fs').readFileSync('player/player.html','utf8');new Function(h.match(/<script>([\s\S]*)<\/script>/)[1].replace('const EPISODES','var EPISODES'));console.log('ok')"`
-3. Republish with the Artifact tool: `file_path` player/player.html, `url` set to `player_artifact_url` from `config.md` (ALWAYS pass `url` — publishing without it mints a new address and breaks the phone bookmark), favicon 📻.
+3. Commit and push `player/player.html` — this will automatically trigger GitHub Pages deployment via the deploy-pages.yml workflow.
 
 ## Invariants
 
@@ -32,5 +32,5 @@ Instance values (player artifact URL, routine IDs, schedule, languages, listener
 - Fronts are independent editorial universes: sources, curriculum, ratings, and editorial rules never leak across fronts. `log.md` and `config.md` are the only shared state.
 - `log.md` line format: `- [ ] date — front — type — title` (+ optional ` — ★n`). Lines without a front column are pre-migration legacy and map to the implicit `main` front.
 - All state changes go through git commits; the player page never writes anywhere.
-- Cloud routines (IDs in config.md) regenerate content daily/weekly; don't duplicate their work by hand unless a run failed. One daily run covers all enabled fronts; the weekly deep-dive rotates round-robin across fronts with a curriculum.
-- Template-owned vs instance-owned files are listed in the `update` skill; keep personal state out of template-owned files.
+- GitHub Actions workflows regenerate content daily/weekly; don't duplicate their work by hand unless a run failed. One daily run covers all enabled fronts; the weekly deep-dive rotates round-robin across fronts with a curriculum.
+- Template-owned vs instance-owned files: Template owns `.github/workflows/`, `player/`, `routines/`, `README.md`, `USECASES.md`, `AGENTS.md`, `.gitignore`. Instance owns `config.md`, `log.md`, `fronts/`. Keep personal state out of template-owned files.
