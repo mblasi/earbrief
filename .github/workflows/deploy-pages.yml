@@ -6,7 +6,7 @@ on:
       - main
       - master
     paths:
-      - 'player/**'
+      - 'player/player.html'
   workflow_dispatch:
 
 permissions:
