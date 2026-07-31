@@ -6,7 +6,7 @@ This repo is the state of a personal news/learning audio pipeline. No applicatio
 
 Instance values (player GitHub Pages URL, languages, listener profile) live in `config.md`. The instance is split into **fronts** — independent topic areas under `fronts/<id>/`, each with its own `front.md` (metadata), `sources.md`, optional `curriculum.md`, and `digests/`. `log.md` is global, one line per episode with a front column. Episode ids are front-qualified: `<front>/<digest-stem>`, e.g. `ai/2026-07-13-news`.
 
-**Content generation is on-demand:** run `/digest` to generate daily news episodes (when backlog is empty), or `/deepdive` to generate a learning episode from the curriculum. No scheduled jobs — you control when new content appears.
+**Content generation is on-demand:** run `/digest` to generate daily news episodes (when backlog is empty), `/deepdive` to generate a learning episode from the curriculum, or `/article <URL>` to create an episode from a specific article. No scheduled jobs — you control when new content appears.
 
 ## Commands you will be asked to execute
 
@@ -14,6 +14,7 @@ Instance values (player GitHub Pages URL, languages, listener profile) live in `
 
 - `/digest` — Generate daily news digest episodes for all enabled fronts. Run when the backlog is empty or when fresh content is wanted. See `.opencode/skills/digest/`.
 - `/deepdive` — Generate a learning episode from the next curriculum item, rotating across fronts. See `.opencode/skills/deepdive/`.
+- `/article <URL>` — Generate a podcast episode from a specific article, summarizing and explaining its content. See `.opencode/skills/article/`.
 - `/setup` — First-run initialization: interviews the user, writes config.md, creates fronts, sets up GitHub Pages.
 - `/update` — Pull template improvements from upstream without touching personal state.
 
@@ -41,5 +42,5 @@ Instance values (player GitHub Pages URL, languages, listener profile) live in `
 - Fronts are independent editorial universes: sources, curriculum, ratings, and editorial rules never leak across fronts. `log.md` and `config.md` are the only shared state.
 - `log.md` line format: `- [ ] date — front — type — title` (+ optional ` — ★n`). Lines without a front column are pre-migration legacy and map to the implicit `main` front.
 - All state changes go through git commits; the player page never writes anywhere.
-- Content generation is on-demand via `/digest` and `/deepdive` skills — run them when the backlog is empty or when you want new content. No scheduled jobs.
+- Content generation is on-demand via `/digest`, `/deepdive`, and `/article` skills — run them when the backlog is empty or when you want new content. No scheduled jobs.
 - Template-owned vs instance-owned files are listed in the `update` skill; keep personal state out of template-owned files.
