@@ -5,6 +5,7 @@ Your personal audio briefing, generated on-demand by AI. No servers, no app, no 
 - **Fronts**: N independent topic areas — IT, politics, sports, whatever you follow — each with its own sources, curriculum, and episodes.
 - **On-demand news digests**: run `/digest` when your backlog is empty and the AI researches and writes spoken news episodes from each front's sources.
 - **On-demand deep-dives** (~20 min): run `/deepdive` and the AI writes a lesson from the next curriculum item, rotating across fronts.
+- **Article episodes**: run `/article <URL>` to turn any article into an explained audio episode.
 - **Player**: one GitHub Pages URL bookmarked on your phone — switch fronts with a tap, play/pause, progress, listened tracking, optional Spanish rendition.
 
 The template ships with one AI/ML engineering front as a worked example; your fronts, sources, and curricula are yours to define — any fields work.
@@ -35,6 +36,7 @@ Everything is driven from an AI agent session in your repo — two slash command
 | `/setup` | First-run initialization: interviews you, writes `config.md`, creates your fronts (each with its own sources and optional curriculum), sets up GitHub Pages deployment. |
 | `/digest` | Generate daily news digests for all enabled fronts. Run when backlog is empty or when you want fresh content. |
 | `/deepdive` | Generate a learning episode from the next curriculum item, rotating across fronts. |
+| `/article <URL>` | Generate a podcast episode from a specific article, summarizing and explaining its content. |
 | `/update` | Pulls the latest template improvements (player features, prompt fixes) without touching your fronts, digests, log, or config. Pre-fronts instances are migrated to the multi-front layout automatically. |
 
 ### Chat ops
