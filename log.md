@@ -7,6 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
+- [ ] 2026-07-31 — ai — article — The Code Is Disposable. The Codebase Is Not.
 - [ ] 2026-07-31 — ai — article — Software Factories, Light and Dark
 - [ ] 2026-07-30 — ai — news — vLLM Rewrites Its Scheduler From Scratch, Meta's Llama Four Leaks Before the Keynote, and the First Production KV-Quantization Benchmark Nobody Can Reproduce
 - [x] 2026-07-29 — ai — news — MCP Rewrites Its Own Foundations, Claude Halves a Post-Quantum Signature Scheme's Strength, and the Forensic Autopsy of July's Rogue Agent Lands — ★5
