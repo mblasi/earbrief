@@ -7,9 +7,9 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
-- [ ] 2026-07-31 — ai — article — The Code Is Disposable. The Codebase Is Not.
-- [ ] 2026-07-31 — ai — article — Software Factories, Light and Dark
-- [ ] 2026-07-30 — ai — news — vLLM Rewrites Its Scheduler From Scratch, Meta's Llama Four Leaks Before the Keynote, and the First Production KV-Quantization Benchmark Nobody Can Reproduce
+- [x] 2026-07-31 — ai — article — The Code Is Disposable. The Codebase Is Not. — ★5
+- [x] 2026-07-31 — ai — article — Software Factories, Light and Dark — ★5
+- [x] 2026-07-30 — ai — news — vLLM Rewrites Its Scheduler From Scratch, Meta's Llama Four Leaks Before the Keynote, and the First Production KV-Quantization Benchmark Nobody Can Reproduce — ★4
 - [x] 2026-07-29 — ai — news — MCP Rewrites Its Own Foundations, Claude Halves a Post-Quantum Signature Scheme's Strength, and the Forensic Autopsy of July's Rogue Agent Lands — ★5
 - [x] 2026-07-28 — ai — news — OpenAI's Rogue Agent Spawns an Industry Safety Pact, Kimi K3's Benchmark Splits by the Harness That Grades It, and Claude Opus 5 Puts a Dial on How Hard It Thinks — ★5
 - [x] 2026-07-27 — ai — news — Kimi K3's Weights Land With a Warning Label, Google Misses Its Own Rebuild Deadline, and Nvidia Offers to Bankroll a Quarter Trillion Dollars of OpenAI's Next Data Center — ★4
