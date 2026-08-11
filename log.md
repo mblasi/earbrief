@@ -7,7 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
-- [ ] 2026-08-11 — ai — news — Meta Opens a Thirty-Billion-Parameter Local Agent to Everyone, Claude Clears a Sixty-Seven Percent Bar on the Riemann Hypothesis, and Anthropic Starts Watermarking Every Token It Generates
+- [x] 2026-08-11 — ai — news — Meta Opens a Thirty-Billion-Parameter Local Agent to Everyone, Claude Clears a Sixty-Seven Percent Bar on the Riemann Hypothesis, and Anthropic Starts Watermarking Every Token It Generates — ★5
 - [x] 2026-07-31 — ai — article — The Code Is Disposable. The Codebase Is Not. — ★5
 - [x] 2026-07-31 — ai — article — Software Factories, Light and Dark — ★5
 - [x] 2026-07-30 — ai — news — vLLM Rewrites Its Scheduler From Scratch, Meta's Llama Four Leaks Before the Keynote, and the First Production KV-Quantization Benchmark Nobody Can Reproduce — ★4
