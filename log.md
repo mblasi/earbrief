@@ -7,8 +7,8 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
-- [ ] 2026-08-11 — ai — article — Why Software Factories Fail - And How to Actually Use AI Coding Agents
-- [ ] 2026-08-11 — ai — article — SwarmForge — Coordinating AI Agents with Disciplined Tmux Orchestration
+- [x] 2026-08-11 — ai — article — Why Software Factories Fail - And How to Actually Use AI Coding Agents
+- [x] 2026-08-11 — ai — article — SwarmForge — Coordinating AI Agents with Disciplined Tmux Orchestration
 - [x] 2026-08-11 — ai — news — Meta Opens a Thirty-Billion-Parameter Local Agent to Everyone, Claude Clears a Sixty-Seven Percent Bar on the Riemann Hypothesis, and Anthropic Starts Watermarking Every Token It Generates — ★5
 - [x] 2026-07-31 — ai — article — The Code Is Disposable. The Codebase Is Not. — ★5
 - [x] 2026-07-31 — ai — article — Software Factories, Light and Dark — ★5
