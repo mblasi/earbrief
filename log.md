@@ -7,7 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
-- [ ] 2026-08-13 — ai — news — Frontier Models Drop on Three Fronts While Every Lab's Encrypted Reasoning Turns Out to Have Been Readable All Along
+- [x] 2026-08-13 — ai — news — Frontier Models Drop on Three Fronts While Every Lab's Encrypted Reasoning Turns Out to Have Been Readable All Along — ★5
 - [x] 2026-08-11 — ai — article — Why Software Factories Fail - And How to Actually Use AI Coding Agents
 - [x] 2026-08-11 — ai — article — SwarmForge — Coordinating AI Agents with Disciplined Tmux Orchestration
 - [x] 2026-08-11 — ai — news — Meta Opens a Thirty-Billion-Parameter Local Agent to Everyone, Claude Clears a Sixty-Seven Percent Bar on the Riemann Hypothesis, and Anthropic Starts Watermarking Every Token It Generates — ★5
