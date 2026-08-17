@@ -7,7 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
-- [ ] 2026-08-15 — ai — news — Z.ai's GLM-5.3 Reaches Frontier Coding Through Post-Training Alone and Discovers Exploitation Capabilities It Did Not Expect, Benchmark Pressure Quietly Broke How Opus Five Handles Ambiguity, and OpenAI's Smartest Model Now Runs at Fourteen Times the Speed
+- [x] 2026-08-15 — ai — news — Z.ai's GLM-5.3 Reaches Frontier Coding Through Post-Training Alone and Discovers Exploitation Capabilities It Did Not Expect, Benchmark Pressure Quietly Broke How Opus Five Handles Ambiguity, and OpenAI's Smartest Model Now Runs at Fourteen Times the Speed
 - [x] 2026-08-13 — ai — news — Frontier Models Drop on Three Fronts While Every Lab's Encrypted Reasoning Turns Out to Have Been Readable All Along — ★5
 - [x] 2026-08-11 — ai — article — Why Software Factories Fail - And How to Actually Use AI Coding Agents
 - [x] 2026-08-11 — ai — article — SwarmForge — Coordinating AI Agents with Disciplined Tmux Orchestration
