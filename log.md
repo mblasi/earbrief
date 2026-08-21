@@ -7,7 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
-- [ ] 2026-08-19 — ai — news — OpenAI Hits the Emergency Brake, Ornith Closes the Loop, and Cerebras Triples the Wafer
+- [x] 2026-08-19 — ai — news — OpenAI Hits the Emergency Brake, Ornith Closes the Loop, and Cerebras Triples the Wafer — ★4
 - [x] 2026-08-18 — ai — news — Copilot Wrote the Exploit, a Red Agent Found It, and OpenAI Is Telling You to Move Now — ★4
 - [x] 2026-08-15 — ai — news — Z.ai's GLM-5.3 Reaches Frontier Coding Through Post-Training Alone and Discovers Exploitation Capabilities It Did Not Expect, Benchmark Pressure Quietly Broke How Opus Five Handles Ambiguity, and OpenAI's Smartest Model Now Runs at Fourteen Times the Speed — ★4
 - [x] 2026-08-13 — ai — news — Frontier Models Drop on Three Fronts While Every Lab's Encrypted Reasoning Turns Out to Have Been Readable All Along — ★5
