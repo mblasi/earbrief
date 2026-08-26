@@ -7,7 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
-- [ ] 2026-08-22 — ai — news — The Protocol Layer Grows Up: MCP Gets Agent Identity, Bun Gets a Browser, and ChatGPT Quietly Reroutes Its Searches
+- [x] 2026-08-22 — ai — news — The Protocol Layer Grows Up: MCP Gets Agent Identity, Bun Gets a Browser, and ChatGPT Quietly Reroutes Its Searches — ★5
 - [x] 2026-08-21 — ai — news — OpenAI Blinks on Astra, Gemini Doubles Down on Benchmarks, and a GPU Gets Its Entire Memory Hierarchy Measured — ★3
 - [x] 2026-08-19 — ai — news — OpenAI Hits the Emergency Brake, Ornith Closes the Loop, and Cerebras Triples the Wafer — ★4
 - [x] 2026-08-18 — ai — news — Copilot Wrote the Exploit, a Red Agent Found It, and OpenAI Is Telling You to Move Now — ★4
