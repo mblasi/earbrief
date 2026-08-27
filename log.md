@@ -7,6 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
+- [ ] 2026-08-27 — ai — article — Your Agent Files Have a Half-Life — A Practical Guide to Auditing Them
 - [ ] 2026-08-27 — ai — news — The HF Incident Report Goes Public, Two New Architectures Bet on Hybrid Attention, and Jalapeño Posts Real Numbers
 - [x] 2026-08-22 — ai — news — The Protocol Layer Grows Up: MCP Gets Agent Identity, Bun Gets a Browser, and ChatGPT Quietly Reroutes Its Searches — ★5
 - [x] 2026-08-21 — ai — news — OpenAI Blinks on Astra, Gemini Doubles Down on Benchmarks, and a GPU Gets Its Entire Memory Hierarchy Measured — ★3
