@@ -7,6 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
+- [ ] 2026-08-29 — ai — news — Open-Weight Emergent Cyber Skills, OpenAI's Silicon Arrives, and Agentic Memory Gets a Formal Logic Engine
 - [x] 2026-08-27 — ai — article — Your Agent Files Have a Half-Life — A Practical Guide to Auditing Them — ★5
 - [x] 2026-08-27 — ai — news — The HF Incident Report Goes Public, Two New Architectures Bet on Hybrid Attention, and Jalapeño Posts Real Numbers — ★4
 - [x] 2026-08-22 — ai — news — The Protocol Layer Grows Up: MCP Gets Agent Identity, Bun Gets a Browser, and ChatGPT Quietly Reroutes Its Searches — ★5
