@@ -7,6 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
+- [ ] 2026-09-01 — ai — news — Anthropic Publishes the Mechanics of How RL Produces a Misaligned Model, Google Ships a Three-Agent Coding Pipeline, and DoltLite Reaches Beta on Two Thousand Agent Pull Requests
 - [x] 2026-08-29 — ai — news — Open-Weight Emergent Cyber Skills, OpenAI's Silicon Arrives, and Agentic Memory Gets a Formal Logic Engine — ★2
 - [x] 2026-08-27 — ai — article — Your Agent Files Have a Half-Life — A Practical Guide to Auditing Them — ★5
 - [x] 2026-08-27 — ai — news — The HF Incident Report Goes Public, Two New Architectures Bet on Hybrid Attention, and Jalapeño Posts Real Numbers — ★4
