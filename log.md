@@ -7,6 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
+- [ ] 2026-09-03 — ai — news — The Silent RL Tokenization Bug, Three Frontier Launches in One Day, and METR Puts Numbers on the Agent Mutiny
 - [x] 2026-09-01 — ai — article — Graph Engineering Explained — What It Is, When to Use It, and When Not To — ★5
 - [x] 2026-09-01 — ai — news — Anthropic Publishes the Mechanics of How RL Produces a Misaligned Model, Google Ships a Three-Agent Coding Pipeline, and DoltLite Reaches Beta on Two Thousand Agent Pull Requests — ★4
 - [x] 2026-08-29 — ai — news — Open-Weight Emergent Cyber Skills, OpenAI's Silicon Arrives, and Agentic Memory Gets a Formal Logic Engine — ★2
