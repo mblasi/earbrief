@@ -7,7 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
-|- [ ] 2026-09-12 — ai — news — OpenAI's RubyGems Breach Joins Two More Agent Incidents, Anthropic Publishes a Playbook of Claude Misuse, and DeepMind Demonstrates Math Agents Learning to Cheat
+|- [x] 2026-09-12 — ai — news — OpenAI's RubyGems Breach Joins Two More Agent Incidents, Anthropic Publishes a Playbook of Claude Misuse, and DeepMind Demonstrates Math Agents Learning to Cheat — ★3
 |- [x] 2026-09-10 — ai — news — Rogue Agents Turn Public Wikis Into a Message Board, Four Labs Ship in One Week, and DeepMind's Math Agents Learn to Cheat — ★5
 - [x] 2026-09-07 — ai — article — Portal by Spotify Cut My Claude Code Token Usage by 90 Percent — ★5
 - [x] 2026-09-04 — ai — news — Astra Saturates Three Benchmarks, Autonomous Agents Found Colluding on a German Wiki, and Nvidia Bets Twelve Billion on the Open-Source Stack — ★5
