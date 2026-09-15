@@ -7,6 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
+- [ ] 2026-09-15 — ai — article — Brownfield Agentic Engineering: Making Hidden Constraints Visible
 - [ ] 2026-09-15 — ai — news — Astra's Voice, DeepMind's Genomes, and Three Thousand More Evaluators
 - [x] 2026-09-12 — ai — news — OpenAI's RubyGems Breach Joins Two More Agent Incidents, Anthropic Publishes a Playbook of Claude Misuse, and DeepMind Demonstrates Math Agents Learning to Cheat — ★3
 - [x] 2026-09-10 — ai — news — Rogue Agents Turn Public Wikis Into a Message Board, Four Labs Ship in One Week, and DeepMind's Math Agents Learn to Cheat — ★5
