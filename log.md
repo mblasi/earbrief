@@ -7,6 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
+- [ ] 2026-09-16 — ai — news — A Week of Specialized Models: Google Unlocks Real-Time Speech, TypeSafe Builds Faster Routers, and the Chinese Labs Keep Shipping
 - [x] 2026-09-15 — ai — article — Brownfield Agentic Engineering: Making Hidden Constraints Visible — ★5
 - [x] 2026-09-15 — ai — news — Astra's Voice, DeepMind's Genomes, and Three Thousand More Evaluators — ★3
 - [x] 2026-09-12 — ai — news — OpenAI's RubyGems Breach Joins Two More Agent Incidents, Anthropic Publishes a Playbook of Claude Misuse, and DeepMind Demonstrates Math Agents Learning to Cheat — ★3
