@@ -15,6 +15,18 @@ Edit freely. The daily routine reads tier 1 every run; tier 2 is scanned by the 
 - Meta AI blog — https://ai.meta.com/blog/
 - Hugging Face blog — https://huggingface.co/blog
 
+## Tier 1 — X/Twitter authors
+
+- Andrej Karpathy (@karpathy) — LLM internals, from-scratch builds — https://x.com/karpathy
+- Simon Willison (@simonw) — Practical LLM building, scrutiny — https://x.com/simonw
+- swyx (@swyx) — AI engineering discipline, ecosystem shape — https://x.com/swyx
+- Ethan Mollick (@emollick) — Evidence-based AI experiments, work impact — https://x.com/emollick
+- Demis Hassabis (@demishassabis) — DeepMind frontier research milestones — https://x.com/demishassabis
+- Greg Brockman (@gdb) — OpenAI product and engineering updates — https://x.com/gdb
+- Addy Osmani (@addyosmani) — Agentic coding workflows, loop engineering — https://x.com/addyosmani
+- Boris Cherny (@bcherny) — Claude Code development and philosophy — https://x.com/bcherny
+- Georgi Gerganov (@ggerganov) — llama.cpp, local LLM inference — https://x.com/ggerganov
+
 ## Tier 2 — weekly scan
 
 - The Batch (Andrew Ng) — https://www.deeplearning.ai/the-batch/

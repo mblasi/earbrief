@@ -15,6 +15,16 @@ Edit freely. The daily routine reads tier 1 every run; tier 2 is scanned by the 
 - PureScript Discourse — https://discourse.purescript.org/
 - InfoQ (architecture & design) — https://www.infoq.com/
 
+## Tier 1 — X/Twitter authors
+
+- Simon Peyton Jones (@simonpj95) — Haskell co-creator, language design — https://x.com/simonpj95
+- Vitaly Bragilevsky (@VBragilevsky) — Haskell in Depth, Rust ecosystem — https://x.com/VBragilevsky
+- impurepics (@impurepics) — Functional programming and category theory — https://x.com/impurepics
+- Ryan Peterman (@ryanlpeterman) — FP interviews, education, thinking in types — https://x.com/ryanlpeterman
+- Bartosz Milewski (@bartoszmilewski) — Category theory for programmers — https://x.com/bartoszmilewski
+- Alex Groce (@alexgroce) — Property-based testing, specification — https://x.com/alexgroce
+- Kevlin Henney (@KevlinHenney) — Software design, functional patterns — https://x.com/KevlinHenney
+
 ## Tier 2 — weekly scan
 
 - ACM Transactions on Programming Languages and Systems — https://dl.acm.org/journal/toplas
