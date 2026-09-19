@@ -7,6 +7,8 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
+- [ ] 2026-09-19 — ai — news — Gemini's First Breakout, Fine-Tuning Costs Collapse, Post-Training Becomes Everything
+- [ ] 2026-09-19 — fp — news — Agents as Pure Functions, Type-Safe Protocols, Immutable Event Logs
 - [x] 2026-09-16 — ai — news — A Week of Specialized Models: Google Unlocks Real-Time Speech, TypeSafe Builds Faster Routers, and the Chinese Labs Keep Shipping — ★3
 - [x] 2026-09-15 — ai — article — Brownfield Agentic Engineering: Making Hidden Constraints Visible — ★5
 - [x] 2026-09-15 — ai — news — Astra's Voice, DeepMind's Genomes, and Three Thousand More Evaluators — ★3
