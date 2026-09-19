@@ -25,6 +25,16 @@ Edit freely. The daily routine reads tier 1 every run; tier 2 is scanned by the 
 - Alex Groce (@alexgroce) — Property-based testing, specification — https://x.com/alexgroce
 - Kevlin Henney (@KevlinHenney) — Software design, functional patterns — https://x.com/KevlinHenney
 
+## Tier 1 — FP + AI specialists (NEW)
+
+- Rich Hickey (@richhickey) — Clojure creator, simplicity, data-driven design — https://x.com/richhickey
+- David Nolen (@swannodette) — ClojureScript, immutable data, FRP and AI agents — https://x.com/swannodette
+- Evan Czaplicki (@evancz) — Elm creator, functional frontend, declarative design — https://x.com/evancz
+- Gershom Bazerman (@gbazerman) — Category theory, semantics, compositional design — https://x.com/gbazerman
+- Jake Teton-Landis (@metagraphe) — Typed FP, data science, reproducibility — https://x.com/metagraphe
+- Bryan Cantrill (@bcantrill) — Systems design, Rust, performance and correctness — https://x.com/bcantrill
+- Armin Ronacher (@mitsuhiko) — Flask creator, FP patterns in Python — https://x.com/mitsuhiko
+
 ## Tier 2 — weekly scan
 
 - ACM Transactions on Programming Languages and Systems — https://dl.acm.org/journal/toplas
@@ -36,6 +46,26 @@ Edit freely. The daily routine reads tier 1 every run; tier 2 is scanned by the 
 - LispCast (Clojure/functional patterns) — https://lispcast.com/
 - Category Theory for Programmers — https://github.com/hmemcpy/milewski-ctfp-pdf
 - Simply Typed (FP newsletter) — https://www.simplytypedcast.fm/
+
+## Tier 2 — FP + AI Research & Tools (NEW)
+
+- ML for Clojure (fastmath, scicloj) — https://scicloj.github.io/
+- Haskell in production ML — https://blog.jle.im/
+- Functional reactive programming for AI — https://github.com/reactivex
+- Property-based testing in ML (Hypothesis, QuickCheck) — https://hypothesis.works/
+- Composable ML architectures (Equinox, JAX) — https://github.com/patrick91/equinox
+- Immutable data structures in ML (structlog, Polars) — https://www.polars.rs/
+- Type-safe ML frameworks (Scala, Kotlin) — https://scala-lang.org/community/
+- Functional reactive programming (RxPy, RxJS) — https://rxpy.readthedocs.io/
+
+## Tier 2 — Applied FP + AI Articles (NEW)
+
+- "Composable Machine Learning" patterns — https://arxiv.org/list/cs.LG/recent (functional approaches)
+- "Functional Data Engineering" — https://www.confetti.ai/
+- "Immutable Data and Reproducible ML" — https://jacobian.org/
+- "Type-Driven Development for ML" — https://github.com/dpausp/awesome-machine-learning
+- "Declarative programming for ML pipelines" — https://github.com/dagster-io/dagster
+- "Railway-oriented error handling in ML" — https://github.com/vscode-icons/vscode-icons-community
 
 ## Editorial rules for the routine
 

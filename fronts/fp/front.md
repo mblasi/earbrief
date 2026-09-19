@@ -16,7 +16,13 @@ Optional overrides (fall back to config.md when absent):
 
 ## Editorial identity
 
-Domain-Driven Design, functional languages and ecosystems, modern design techniques, 
-and system evolution toward functional architectures. Technical depth on how to think 
-in terms of functions, types, immutability, and composition when building and refactoring 
-systems at scale. Practical patterns over dogma.
+Domain-Driven Design, functional languages and ecosystems, modern design techniques, and system evolution toward functional architectures. **New scope: FP applied to AI systems.**
+
+Technical depth on:
+- Core FP: functions, types, immutability, composition as design tool
+- Data systems: functional data pipelines, immutable data infrastructure, reproducible ML
+- ML applications: agents as composed state machines, type-safe model design, declarative training configs
+- Languages: practical patterns in Clojure, Haskell, Rust, F#, Elm for building AI infrastructure
+- The intersection: how functional principles make ML systems more testable, composable, and maintainable
+
+Practical patterns over dogma. Prefer implementations over theory.
