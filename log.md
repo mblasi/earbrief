@@ -7,6 +7,8 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
+- [ ] 2026-09-21 — ai — news — Claude Code's AGENTS.md, Codex Remote, and MCP's Safety Role
+- [ ] 2026-09-21 — fp — news — Type Systems as Safety Nets: Rust's FP Appeal and Haskell's Commercial Question
 - [x] 2026-09-19 — ai — news — Gemini's First Breakout: Three Companies Hacked, Fine-Tuning Costs Collapse, Post-Training Dominates — ★4
 - [x] 2026-09-19 — fp — news — Agents as Pure Functions: Elm Architecture, Type-Safe Protocols, and Immutable Logs — ★5
 - [x] 2026-09-16 — ai — news — A Week of Specialized Models: Google Unlocks Real-Time Speech, TypeSafe Builds Faster Routers, and the Chinese Labs Keep Shipping — ★3
