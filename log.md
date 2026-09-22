@@ -9,7 +9,6 @@ Format: `- [x] date — type — title` (checked = listened).
 <!-- newest first -->
 - [ ] 2026-09-22 — ai — news — Jev's Decision Models Reshape Classification, TypeSafe Pivots LLM Architecture, and DeepMind Releases AlphaGenome Atlas
 - [ ] 2026-09-22 — fp — news — Rust Redefined for the LLM Era, Elm Pages Pairs with Agents, and Clojure Teams Rally Around Quarterly Cadence
-- [x] 2026-09-21 — ai — news — Claude Code's AGENTS.md, Codex Remote, and MCP's Safety Role — ★3
 - [x] 2026-09-21 — fp — news — Type Systems as Safety Nets: Rust's FP Appeal and Haskell's Commercial Question — ★4
 - [x] 2026-09-19 — ai — news — Gemini's First Breakout: Three Companies Hacked, Fine-Tuning Costs Collapse, Post-Training Dominates — ★4
 - [x] 2026-09-19 — fp — news — Agents as Pure Functions: Elm Architecture, Type-Safe Protocols, and Immutable Logs — ★5
