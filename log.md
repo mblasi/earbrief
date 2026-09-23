@@ -7,8 +7,8 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
-- [ ] 2026-09-23 — ai — news — The Inference Shift: Why Training is Now 30% of AI Compute, Continual Learning Enters Production
-- [ ] 2026-09-23 — fp — news — Haskell's Type System Enters LLM Design, Roc 0.1.0 Challenges Functional Orthodoxy, and Clojure's Dynamic FP Finds Enterprise Niches
+- [x] 2026-09-23 — ai — news — The Inference Shift: Why Training is Now 30% of AI Compute, Continual Learning Enters Production — ★3
+- [x] 2026-09-23 — fp — news — Haskell's Type System Enters LLM Design, Roc 0.1.0 Challenges Functional Orthodoxy, and Clojure's Dynamic FP Finds Enterprise Niches — ★4
 - [x] 2026-09-22 — ai — news — GPT-6 Sol and Luna, Jev's System One Models, and the Future of Decision Models — ★3
 - [x] 2026-09-22 — fp — news — Immutable Event Logs for Agent Auditing, Scala's Resurgence, and Clojure's Persistent Data Structures — ★4
 - [x] 2026-09-21 — ai — news — Claude Code's AGENTS.md, Codex Remote, and MCP's Safety Role — ★3
