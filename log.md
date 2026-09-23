@@ -7,8 +7,8 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
-- [x] 2026-09-22 — ai — news — Jev's Decision Models Reshape Classification, TypeSafe Pivots LLM Architecture, and DeepMind Releases AlphaGenome Atlas — ★3
-- [x] 2026-09-22 — fp — news — Rust Redefined for the LLM Era, Elm Pages Pairs with Agents, and Clojure Teams Rally Around Quarterly Cadence — ★4
+- [x] 2026-09-22 — ai — news — GPT-6 Sol and Luna, Jev's System One Models, and the Future of Decision Models — ★3
+- [x] 2026-09-22 — fp — news — Immutable Event Logs for Agent Auditing, Scala's Resurgence, and Clojure's Persistent Data Structures — ★4
 - [x] 2026-09-21 — ai — news — Claude Code's AGENTS.md, Codex Remote, and MCP's Safety Role — ★3
 - [x] 2026-09-21 — fp — news — Type Systems as Safety Nets: Rust's FP Appeal and Haskell's Commercial Question — ★4
 - [x] 2026-09-19 — ai — news — Gemini's First Breakout: Three Companies Hacked, Fine-Tuning Costs Collapse, Post-Training Dominates — ★4
