@@ -7,8 +7,8 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
-- [ ] 2026-09-23 — ai — article — RADAR at Meta: How Risk-Stratified Automation Makes AI-Generated Code Review Practical
-- [ ] 2026-09-23 — ai — article — Code Review is Dead: Rachel Laycock on Why AI is Exposing the Wrong Problem
+- [x] 2026-09-23 — ai — article — RADAR at Meta: How Risk-Stratified Automation Makes AI-Generated Code Review Practical — ★5
+- [x] 2026-09-23 — ai — article — Code Review is Dead: Rachel Laycock on Why AI is Exposing the Wrong Problem — ★5
 - [x] 2026-09-23 — ai — news — The Inference Shift: Why Training is Now 30% of AI Compute, Continual Learning Enters Production — ★3
 - [x] 2026-09-23 — fp — news — Haskell's Type System Enters LLM Design, Roc 0.1.0 Challenges Functional Orthodoxy, and Clojure's Dynamic FP Finds Enterprise Niches — ★4
 - [x] 2026-09-22 — ai — news — GPT-6 Sol and Luna, Jev's System One Models, and the Future of Decision Models — ★3
