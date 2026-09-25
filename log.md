@@ -7,6 +7,7 @@ Format: `- [x] date — type — title` (checked = listened).
 ## Episodes
 
 <!-- newest first -->
+- [ ] 2026-09-25 — fp — deepdive — The function: signatures, composition, and the type as a specification
 - [ ] 2026-09-23 — ai — article — Brian Houck on Code Review: The Visible Output is Better Code, The Invisible is a Better Organization
 - [x] 2026-09-23 — ai — article — RADAR at Meta: How Risk-Stratified Automation Makes AI-Generated Code Review Practical — ★5
 - [x] 2026-09-23 — ai — article — Code Review is Dead: Rachel Laycock on Why AI is Exposing the Wrong Problem — ★5

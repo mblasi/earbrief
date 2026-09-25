@@ -8,7 +8,7 @@ The weekly deep-dive routine takes the **first unchecked item**, writes a ~20-mi
 
 ## Track A — Foundations & Type Systems
 
-- [ ] A1. The function: signatures, composition, and the type as a specification
+- [x] A1. The function: signatures, composition, and the type as a specification (2026-09-25)
 - [ ] A2. Immutability and persistent data structures: why and when it matters
 - [ ] A3. Algebraic Data Types (ADTs): sum types, product types, and modeling domains
 - [ ] A4. Monoids and semigroups: the algebra of combining things
