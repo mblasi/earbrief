@@ -17,7 +17,8 @@ Bring template files up to date from the upstream earbrief repo. Personal state 
 
 ## Files owned by the instance (NEVER updated)
 
-- `config.md`, `log.md`, `fronts/` (each front's `front.md`, `sources.md`, `curriculum.md`, `digests/`)
+- `config.md`, `log.md`, `fronts/` (all fronts, including custom ones like `navegacion/`)
+- Each front is fully instance-owned: `front.md`, `sources.md`, `curriculum.md`, `digests/`
 - legacy pre-migration locations: root `sources.md`, `curriculum.md`, `digests/`
 
 ## Procedure
