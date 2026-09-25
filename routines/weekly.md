@@ -4,11 +4,14 @@ Get today's date with `date +%F` (call it TODAY).
 
 The instance has one or more FRONTS: directories under `fronts/`, each with a `front.md` (metadata) and optionally its own `curriculum.md`. Only fronts with `enabled: true` AND a curriculum.md containing at least one unchecked real item participate in deep-dives.
 
-## Pre-check: Backlog guard
+## Pre-check: Backlog guard (per-front)
 
-Before creating a new deep-dive, check `log.md` for unchecked deep-dive episodes (lines with `- [ ]` and type `deepdive`). Count them across all fronts. If there are 3 or more unchecked deep-dives, STOP — do not create a new one. Report to the user: "Backlog full: N unchecked deepdives. Mark some listened before generating new ones." If there are fewer than 3, proceed.
+Before creating a new deep-dive, check `log.md` for unchecked deep-dive episodes belonging to participating fronts:
 
-Pick ONE front per run, round-robin: find the most recent `*-deepdive-*.md` across all fronts/*/digests/ and note which front it belongs to; your front is the NEXT participating front after it in `order` (wrapping around). If no deep-dive exists yet, take the first participating front. If no front participates, stop — nothing to do. Call the chosen front's id FRONT.
+1. Identify all fronts with `enabled: true` AND a `curriculum.md` containing at least one unchecked real item. These are the "participating" fronts.
+2. For EACH participating front independently: count the unchecked deep-dive episodes (lines with `- [ ]` and type `deepdive`) for that front ONLY. If that front already has 1 or more unchecked deepdives, skip it — do not generate a new one for it yet (the listener must listen to the pending one first). If a front has 0 unchecked deepdives, it is a candidate for generation.
+3. If NO participating fronts are candidates (all have ≥1 unchecked deepdives), STOP — do not create a new one. Report to the user: "All participating fronts have unchecked deepdives. Mark some listened before generating new ones."
+4. Among the candidate fronts (those with 0 unchecked deepdives), pick ONE using round-robin: find the most recent `*-deepdive-*.md` across all fronts/*/digests/ and note which front it belongs to; your front is the NEXT participating front after it in `order` (wrapping around), restricting to candidate fronts only. If no deep-dive exists yet, take the first candidate front in `order`. Call the chosen front's id FRONT.
 
 1. If a fronts/FRONT/digests/TODAY-deepdive-*.md already exists, stop — nothing to do.
 2. Read fronts/FRONT/curriculum.md. Your topic is the FIRST unchecked item in file order (Track E placeholder items with no real topic don't count). Note its ID (e.g. A2).
