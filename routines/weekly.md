@@ -4,6 +4,10 @@ Get today's date with `date +%F` (call it TODAY).
 
 The instance has one or more FRONTS: directories under `fronts/`, each with a `front.md` (metadata) and optionally its own `curriculum.md`. Only fronts with `enabled: true` AND a curriculum.md containing at least one unchecked real item participate in deep-dives.
 
+## Pre-check: Backlog guard
+
+Before creating a new deep-dive, check `log.md` for unchecked deep-dive episodes (lines with `- [ ]` and type `deepdive`). Count them across all fronts. If there are 3 or more unchecked deep-dives, STOP — do not create a new one. Report to the user: "Backlog full: N unchecked deepdives. Mark some listened before generating new ones." If there are fewer than 3, proceed.
+
 Pick ONE front per run, round-robin: find the most recent `*-deepdive-*.md` across all fronts/*/digests/ and note which front it belongs to; your front is the NEXT participating front after it in `order` (wrapping around). If no deep-dive exists yet, take the first participating front. If no front participates, stop — nothing to do. Call the chosen front's id FRONT.
 
 1. If a fronts/FRONT/digests/TODAY-deepdive-*.md already exists, stop — nothing to do.

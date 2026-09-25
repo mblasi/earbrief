@@ -10,7 +10,8 @@ Generate a deep-dive episode from the next unchecked curriculum item, rotating r
 ## Pre-check
 
 1. Get today's date: `date +%F` (call it TODAY).
-2. Scan all fronts to see which ones have a `curriculum.md` with unchecked items. If none, tell the user there's nothing to deep-dive right now and suggest they can add curriculum items or say "promote <topic>".
+2. **Backlog guard**: Check `log.md` for unchecked deep-dive episodes (lines with `- [ ]` and type `deepdive`). If there are 3 or more unchecked deep-dives across all fronts, STOP — do not create a new one. Report to the user: "Backlog full: N unchecked deepdives. Mark some listened before generating new ones."
+3. Scan all fronts to see which ones have a `curriculum.md` with unchecked items. If none, tell the user there's nothing to deep-dive right now and suggest they can add curriculum items or say "promote <topic>".
 
 ## Execution
 
