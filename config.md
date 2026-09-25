@@ -3,7 +3,7 @@
 Written by /setup. Workflows, AGENTS.md, and chat ops read instance values from here.
 Per-front settings (label, hue, word overrides, enabled) live in fronts/<id>/front.md.
 
-- player_url: https://mblasi.github.io/ai-podcasts/player.html
+- player_url: https://mblasi.github.io/podcasts/player.html
 - timezone: America/Argentina/Buenos_Aires
 - daily_schedule: 07:00 local / 10:00 UTC
 - weekly_schedule: Saturday 08:00 local / 11:00 UTC
