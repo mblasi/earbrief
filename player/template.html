@@ -601,6 +601,11 @@ function applyFrontTheme() {
 
 // ---------- chunking (sentence groups <=190 chars, tagged with paragraph idx) ----------
 function chunk(text) {
+  // defensive sanitization: never speak URLs or markdown links
+  text = text.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1'); // [title](url) -> title
+  text = text.replace(/\bhttps?:\/\/\S+/g, ''); // remove http/https URLs
+  text = text.replace(/\bwww\.\S+/g, ''); // remove www URLs
+  text = text.replace(/  +/g, ' '); // collapse double spaces
   const out = [];
   text.split(/\n\s*\n/).forEach((para, p) => {
     const clean = para.replace(/\s+/g, " ").trim();

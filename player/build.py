@@ -28,9 +28,11 @@ def parse(path):
     if not m:
         return None
     meta = dict(re.findall(r"^(\w+):\s*(.+)$", m.group(1), re.M))
-    body, _, src_block = m.group(2).partition("\n## Sources")
+    # split at any level-2 sources heading, case-insensitive (e.g. ## Sources, ## Fuentes, ## Fontes)
+    body_and_sources = m.group(2)
+    body, _, src_block = re.split(r'\n##\s*(Sources|Fuentes|Fontes)\b', body_and_sources, maxsplit=1, flags=re.I) if re.search(r'\n##\s*(Sources|Fuentes|Fontes)\b', body_and_sources, re.I) else (body_and_sources, None, "")
     sources = []
-    for line in src_block.strip().splitlines():
+    for line in src_block.strip().splitlines() if src_block else []:
         u = re.search(r"https?://\S+", line)
         if not u:
             continue
@@ -70,6 +72,18 @@ if (root / "digests").is_dir() and list((root / "digests").glob("*.md")):
 fronts.sort(key=lambda f: (f["order"], f["id"]))
 
 
+def sanitize_spoken(text):
+    """Sanitize text for TTS: remove URLs, convert markdown links to titles, collapse spaces."""
+    # markdown links [title](url) -> title
+    text = re.sub(r'\[([^\]]+)\]\([^\)]+\)', r'\1', text)
+    # remove bare URLs (http/https/www)
+    text = re.sub(r'\bhttps?://\S+', '', text)
+    text = re.sub(r'\bwww\.\S+', '', text)
+    # collapse double spaces
+    text = re.sub(r'  +', ' ', text)
+    return text
+
+
 def episode_from(f, front):
     parsed = parse(f)
     if not parsed:
@@ -83,7 +97,7 @@ def episode_from(f, front):
         "type": meta.get("type", "news"),
         "title": meta.get("title", f.stem).strip().strip('"'),
         "words": int(meta.get("words", "0") or 0),
-        "text": body,
+        "text": sanitize_spoken(body),
         "sources": sources,
     }
     es = f.with_name(f.stem + ".es.md")
@@ -96,7 +110,7 @@ def episode_from(f, front):
             if n_en != n_es:
                 print(f"warn {es.name}: paragraph count {n_es} != {n_en} (position mapping will clamp)")
             ep["title_es"] = meta_es.get("title", ep["title"]).strip().strip('"')
-            ep["text_es"] = body_es
+            ep["text_es"] = sanitize_spoken(body_es)
     return ep
 
 

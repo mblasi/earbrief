@@ -53,7 +53,8 @@ User provides an article URL and optionally:
      ---
      ```
    - **Body** is SPOKEN PROSE for text-to-speech:
-     - No bullet lists, tables, code blocks, URLs, markdown headers mid-episode
+     - No bullet lists, tables, code blocks, markdown headers mid-episode
+     - NEVER include URLs or markdown links in the body — they will be spoken aloud
      - Spell out acronyms on first use; write numbers as you would say them
      - Structure:
        1. **Cold open** (1-2 sentences): Hook — what's interesting about this article?
@@ -72,9 +73,10 @@ User provides an article URL and optionally:
    - If `config.md` sets a secondary language (not `none`), write `fronts/FRONT/digests/<episode-id>.<lang>.md`
    - Translate the body into that language (spoken register, neutral Latin American for Spanish)
    - Keep proper nouns and technical jargon in English where natural
+   - NEVER include URLs or markdown links in the body
    - **CRITICAL**: Exactly the same number of paragraphs in the same order as the English version
    - Frontmatter: translated title, same date/type, translated word count
-   - **Do NOT** include a `## Sources` section in the rendition file
+   - **Do NOT** include a `## Sources` section or any other level-2 markdown heading in the rendition file
 
 8. **Update log.md**: Add at the top of the episodes list (right below `<!-- newest first -->`):
    ```
