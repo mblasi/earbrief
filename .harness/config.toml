@@ -1,0 +1,6 @@
+[project]
+repo = "mblasi/earbrief"
+base_branch = "master"
+
+[harness]
+version = "0.1.0"

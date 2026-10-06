@@ -44,3 +44,12 @@ Instance values (player GitHub Pages URL, languages, listener profile) live in `
 - All state changes go through git commits; the player page never writes anywhere.
 - Content generation is on-demand via `/digest`, `/deepdive`, and `/article` skills — run them when the backlog is empty or when you want new content. No scheduled jobs.
 - Template-owned vs instance-owned files are listed in the `update` skill; keep personal state out of template-owned files.
+
+## Development workflow (harness)
+
+Changes to this repo (not the generated episodes) follow the shared SDLC harness, pinned in `.harness/config.toml`:
+
+- `harness new "title" --type chore` creates the GitHub issue; `harness take <N>` opens `issue/<N>-<slug>`, marks it `status:wip` and assigns it.
+- Work on the issue branch, open a PR that closes the issue (`harness pr <N>`), squash-merge (`harness merge <N>`). Base branch: `master`.
+- `harness doctor` checks the setup; `harness upgrade` shows what changes when the pin moves.
+- Daily digests and article episodes keep committing directly to `master`: they are content, not code changes.
