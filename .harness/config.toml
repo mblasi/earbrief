@@ -3,4 +3,4 @@ repo = "mblasi/earbrief"
 base_branch = "master"
 
 [harness]
-version = "0.1.1"
+version = "0.1.2"
