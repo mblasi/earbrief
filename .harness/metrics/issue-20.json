@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "harness_version": "0.1.13",
+  "issue": 20,
+  "by_model": {},
+  "totals": {
+    "llm_calls": 0,
+    "coder_runs": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "reasoning_tokens": null,
+    "cost_usd": null,
+    "wall_s": 15.364392518997192,
+    "llm_s": 0,
+    "coder_s": 0,
+    "human_wait_s": 0
+  },
+  "net_seconds": 15.364392518997192,
+  "human_wait_s": 0,
+  "outcome": null,
+  "incomplete": false,
+  "type": "chore",
+  "areas": []
+}
