@@ -13,13 +13,18 @@ Legacy (pre-fronts) instances: a root-level digests/ folder is read as an
 implicit front "main", its episode ids stay bare stems, and log.md lines
 without a front column match it — nothing breaks before migration.
 
+Only pending episodes and those listened within the last LISTENED_DAYS days
+(by episode date) are baked into the player, so the page doesn't grow forever.
+
 Usage: python3 player/build.py   (from repo root or anywhere)
 """
+import datetime
 import json
 import pathlib
 import re
 
 root = pathlib.Path(__file__).resolve().parent.parent
+LISTENED_DAYS = 15
 
 
 def parse(path):
@@ -170,6 +175,17 @@ ratings = {e["id"]: log_ratings[key_of(e)] for e in episodes if key_of(e) in log
 matched = {key_of(e) for e in episodes}
 for k in log_keys - matched:
     print(f"warn log.md: checked entry matches no episode: {' — '.join(k)}")
+
+# prune: keep pending + listened within the window (matching above used the full set)
+cutoff = (datetime.date.today() - datetime.timedelta(days=LISTENED_DAYS)).isoformat()
+listened_all = set(listened)
+total = len(episodes)
+episodes = [e for e in episodes if e["id"] not in listened_all or e["date"] >= cutoff]
+kept = {e["id"] for e in episodes}
+listened = [i for i in listened if i in kept]
+ratings = {i: r for i, r in ratings.items() if i in kept}
+if total != len(episodes):
+    print(f"pruned {total - len(episodes)} episodes listened before {cutoff}")
 
 fronts_payload = [{"id": f["id"], "label": f["label"], "hue": f["hue"]} for f in fronts]
 tpl = (root / "player" / "template.html").read_text(encoding="utf-8")
