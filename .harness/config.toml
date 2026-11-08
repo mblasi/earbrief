@@ -4,3 +4,7 @@ base_branch = "master"
 
 [harness]
 version = "0.1.22"
+
+[doctor]
+# El repo no tiene ningun archivo de test: no hay comando de [verify] honesto.
+no_test_suite = "repo de contenido: no hay código que testear"
