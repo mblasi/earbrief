@@ -3,7 +3,7 @@ repo = "mblasi/earbrief"
 base_branch = "master"
 
 [harness]
-version = "0.1.22"
+version = "0.1.25"
 
 [doctor]
 # El repo no tiene ningun archivo de test: no hay comando de [verify] honesto.
